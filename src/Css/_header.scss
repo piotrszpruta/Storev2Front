@@ -1,0 +1,27 @@
+// Mixin = obiekt, którego zadaniem jest exportowanie css do podanych class
+// Mixin pozwala na dodawanie opcionalnych obiektów
+// @mixin flexCenter($direction, $background) {
+//     height: 100vh;
+//     background: $background;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: $direction
+// }
+
+header {
+    // @include flexCenter(column, red);
+
+    color: $textColor;
+    height: 100vh;
+    color: $textColor;
+    background: lightblue;
+    //  Dodawanie obiektu w obiekcie
+    button {
+        background: $primaryButton;
+        //  Funkcjonalność
+        &:hover {
+            background: orange;
+        }
+    }
+}

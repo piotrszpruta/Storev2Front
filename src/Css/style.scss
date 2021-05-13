@@ -1,0 +1,14 @@
+//  SCSS czyli linia po lini. Pierw vary, potem importy jeśli vary wchodzą w import
+@import "vars";
+
+//  Import pliku
+@import 'header';
+
+.contact {
+    // @include flexCenter(row, blue)
+    // Extend = rozszerz o klasę === klonuj jej css
+    @extend header;
+    background: red;
+    // Scss wspiera obliczenia
+    width: 100% - 20%;
+}

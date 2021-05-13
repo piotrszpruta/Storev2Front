@@ -1,0 +1,59 @@
+{
+  "name": "store",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "@apollo/react-hooks": "^4.0.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "apollo-boost": "^0.4.9",
+    "chart.js": "^2.9.4",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.11.0",
+    "lodash": "^4.17.21",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "pdf-lib": "^1.14.0",
+    "react": "^17.0.1",
+    "react-apollo": "^3.1.5",
+    "react-chartjs-2": "^2.11.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.4",
+    "react-scripts": "4.0.0",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "PORT=3003 react-scripts start -FAST_REFRESH=true",
+    "startHTTPS": "HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem react-scripts start -FAST_REFRESH=true",
+    "StartForEver": "HTTPS=true SSL_CRT_FILE=./.cert/cert.pem SSL_KEY_FILE=./.cert/key.pem PORT=3003 forever start -c 'npm start' ./",
+    "build": "react-scripts build",
+    "StartBuild": "forever start -c serve -s build --listen 3003 --ssl-cert './.cert/cert.pem' --ssl-key './.cert/key.pem'",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "react-router-dom": "^5.2.0"
+  }
+}

@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #dedede;
+}
+
+.content {
+    padding-top: 8vh;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fourOhFour {
+    max-width: 500px;
+    margin: 0 auto;
+    height: 92vh;
+    text-align: center;
+}
+
+.fourOhFour h2 {
+    margin-top: 50px;
+    color: #F9673B
+}

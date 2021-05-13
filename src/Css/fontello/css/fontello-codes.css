@@ -1,0 +1,12 @@
+
+.icon-adult:before { content: '\e800'; } /* '' */
+.icon-phone:before { content: '\e801'; } /* '' */
+.icon-home:before { content: '\e802'; } /* '' */
+.icon-basket:before { content: '\e803'; } /* '' */
+.icon-heart:before { content: '\e804'; } /* '' */
+.icon-commerical-building:before { content: '\e811'; } /* '' */
+.icon-desktop:before { content: '\f108'; } /* '' */
+.icon-github:before { content: '\f113'; } /* '' */
+.icon-linux:before { content: '\f17c'; } /* '' */
+.icon-brush:before { content: '\f1fc'; } /* '' */
+.icon-server:before { content: '\f233'; } /* '' */

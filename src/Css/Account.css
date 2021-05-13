@@ -1,0 +1,58 @@
+.accountForm {
+    max-width: 500px;
+    height: 92vh;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.formRegister form {
+    height: 450px;
+}
+
+.formLogin form {
+    height: 350px;
+}
+
+.accountForm form {
+    background: #a3a3a3;
+    color: white;
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.accountForm form button {
+    background: none;
+    border: none;
+    padding: 10px;
+    width: 120px;
+    margin: 10px auto;
+    background: #F9673B;
+    color: white;
+    border-radius: 10%;
+    transition: 0.4s all ease-in-out;
+}
+
+.accountForm form button:hover {
+    width: 140px;
+    transition: 0.4s all ease-in-out;
+}
+
+.accountForm form input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    transition: 0.4s all ease-in-out;
+}
+
+.accountForm form input:focus {
+    border-bottom: 2px solid #F9673B;
+    outline: none;
+    transition: 0.4s all ease-in-out;
+}
