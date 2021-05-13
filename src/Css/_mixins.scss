@@ -1,0 +1,62 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin fullPage(){
+  margin: 0 auto;
+  height: 92vh;
+  text-align: center;
+}
+
+@mixin OhOrangeButton() {
+    width: 50%;
+    height: 50px;
+    padding: 3px;
+    font-size: x-large;
+    margin: 10px auto;
+    color: white;
+    background: $OhOrange;
+    letter-spacing: 1.5px;
+    border: 1px solid grey;
+    box-shadow: 1px 1px 1px #888888;
+    transition: 0.5s all ease-in-out;
+    &:hover {
+      box-shadow: none;
+      width: 45%;
+      transition: 0.5s all ease-in-out;
+    }
+}
+
+@mixin userPopup() {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  box-shadow: 1px 1px 3px #888888;
+  text-align: center;
+  background: #eeeeee;
+  margin-top: 8vh;
+  overflow: scroll;
+  z-index: 7;
+  transition: 1s all ease-in-out;
+}
+
+@mixin productDiv() {
+  max-width: 350px;
+  width: 300px;
+  height: 440px;
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  @include flexCenter(column);
+  img {
+    width: 70%;
+    height: 50%;
+  }
+  button {
+     @include OhOrangeButton();
+   }
+}

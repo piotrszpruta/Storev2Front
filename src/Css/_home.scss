@@ -1,0 +1,162 @@
+.banner {
+  @include flexCenter(row);
+  @include fullPage();
+  .info {
+    max-width: 800px;
+    margin: 0 auto;
+    color: $OhOrange;
+    font-size: 5em;
+    font-family: Helvetica, cursive;
+    text-align: center;
+  }
+  .product {
+    width: 700px;
+    height: 80vh;
+    margin: 0 auto;
+    border-radius: 10px 10px 10px 15px;
+    background-size: 160% 100%;
+    background-position: center;
+  }
+}
+
+.secondBanner {
+  background: #5e5e5e;
+  .image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    height: 55vh;
+    width: 400px;
+    max-width: 600px;
+    text-align: center;
+    @include flexCenter(column);
+    font-size: xx-large;
+    filter: grayscale(70%);
+    transition: 0.4s all ease-in-out;
+    h1 {
+      color: white;
+      background: rgba(249, 103, 59, 0.5);
+    }
+    &:hover {
+      height: 60vh;
+      width: 450px;
+      filter: grayscale(0%);
+      transition: 0.4s all ease-in-out;
+    }
+  }
+}
+
+.thirdBanner {
+  background: linear-gradient(90deg, $OhOrange 20%, #f1f0f0 10%);
+  background-size: 100% 100%;
+  img {
+    border-bottom-right-radius: 10%;
+    border-top-right-radius: 10%;
+    transform: rotate(180deg);
+    max-width: 850px;
+    height: 550px;
+  }
+  span {
+    max-width: 700px;
+    color: $OhOrange;
+    font-size: 2.5em;
+    letter-spacing: 1.6px;
+    font-family: Helvetica, cursive;
+    text-align: center;
+    h1 {
+      margin-bottom: 30px;
+      color: $OhOrange;
+    }
+  }
+}
+
+.fourthBanner {
+  background: linear-gradient(340deg, #a8a8a8 20%, #f1f0f0 10%);
+  background-size: 100% 100%;
+  img {
+    border-bottom-left-radius: 10%;
+    border-top-left-radius: 10%;
+    max-width: 800px;
+    height: 600px;
+  }
+  span {
+    max-width: 700px;
+    color: #2b2b2b;
+    letter-spacing: 2px;
+    font-size: 2em;
+    font-family: Helvetica, cursive;
+    text-align: center;
+    h1 {
+      margin-bottom: 30px;
+      color: $OhOrange;
+    }
+  }
+}
+
+.fifthBanner {
+  background: #f1f0f0;
+  img {
+    border-bottom-right-radius: 10%;
+    border-top-right-radius: 10%;
+    max-width: 800px;
+    height: 600px;
+  }
+  span {
+    max-width: 700px;
+    color: $OhOrange;
+    letter-spacing: 2px;
+    font-size: 2em;
+    font-family: Helvetica, cursive;
+    text-align: center;
+    h1 {
+      margin-bottom: 30px;
+      color: #2b2b2b;
+    }
+  }
+}
+
+.sixthBanner {
+  hr {
+    width: 50%;
+    background: grey;
+  }
+  span {
+    border-bottom: 1px solid darkgrey;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    background: whitesmoke;
+    width: 350px;
+    max-width: 350px;
+    height: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    h1 {
+      color: $OhOrange;
+    }
+  }
+}
+
+.seventhBanner {
+  flex-direction: column;
+  text-align: center;
+  h1 {
+    margin-bottom: 20px;
+  }
+  a h1 {
+    color: $OhOrange;
+    transition: 0.4s all ease-in-out;
+  }
+}
+
+.partialBanner {
+  width: 100%;
+  min-height: 70vh;
+  @include flexCenter(row);
+  justify-content: space-around;
+}
+
+

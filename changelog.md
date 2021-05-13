@@ -3,6 +3,12 @@
 ## 0.11:
 ### Visual
 - Removed admin's navbar non existing buttons
+- Fixed buggy "basket" popup for admin
+- Fixed contact us for non logged users
+- Added some new css rules
+
+### Under the hood
+- Rewriten whole app in scss
 
 ## 0.10:
 ### Visual

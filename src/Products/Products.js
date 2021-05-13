@@ -2,11 +2,8 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
-import "../Css/Products.css"
-
 // Redux data
 import {addBasket, logOut} from "../Redux/actions/index"
-
 
 export default function Products(data){
     const [category, setCategory] = useState("home")

@@ -1,8 +1,5 @@
 import React from "react";
 
-// Css
-import "../Css/Home.css"
-
 // Js
 import Banner from "./Parts/Banner"
 import SecondPage from "./Parts/SecondPage"

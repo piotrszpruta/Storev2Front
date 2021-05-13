@@ -4,7 +4,6 @@ import {useSelector, useDispatch} from "react-redux";
 // Redux data
 import {logOut} from "../Redux/actions/index"
 
-import "../Css/Contact.css"
 
 export default function Contact(){
     const [contact, setContact] = useState()
@@ -68,9 +67,11 @@ export default function Contact(){
     const mapMessages = () => {
         return contact.map(item => {
             return (
-                <div key={item.id}>
-                    <h3>Temat: {item.topic}</h3>
-                    <h3>Zapytanie: {item.data}</h3>
+                <div key={item.id} className="contactMessage">
+                    <h3>Temat: </h3>
+                    <h4>{item.topic}</h4>
+                    <h3>Zapytanie: </h3>
+                    <h4>{item.data}</h4>
                     <h3>Dzień miesiąc rok: {(item["timestamp"].split('T'))[0]}</h3>
                     <h3>Godzina: {(item["timestamp"].split('T'))[1].slice(0, -5)}</h3>
                 </div>
@@ -81,6 +82,11 @@ export default function Contact(){
     const renderData = () => {
         if(contact === undefined){
             return "Loading"
+        } else if(contact.Type !== undefined){
+            return (
+            <div className="contactNoLogged">
+                <h3>Wygląda na to, iż nie jesteś zalogowany. W celu skontaktowania się z nami, zaloguj się</h3>
+            </div>)
         } else {
             if(role === "admin"){
                 return mapMessages()
@@ -99,7 +105,9 @@ export default function Contact(){
                                 <button>Wyśli</button>
                             </form>
                         </div>
-                        {mapMessages()}
+                        <div className="contactMessages">
+                            {mapMessages()}
+                        </div>
                     </div>
                 )
             }
@@ -107,7 +115,7 @@ export default function Contact(){
     }
 
     return (
-        <div className="productsDiv">
+        <div className="contactPage">
             {renderData()}
         </div>
     )

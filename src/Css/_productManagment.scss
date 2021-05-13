@@ -1,0 +1,13 @@
+.addProducts, .editProducts {
+  height: 92vh;
+  form {
+    @include flexCenter(column);
+    * {
+      padding: 2px;
+      margin: 5px;
+    }
+  }
+  button {
+    @include OhOrangeButton
+  }
+}

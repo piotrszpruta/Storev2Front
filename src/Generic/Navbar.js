@@ -1,9 +1,6 @@
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
 
-// Css
-import "../Css/SideBar.css"
-
 // Redux
 import {removeBasket} from "../Redux/actions/index"
 
@@ -22,35 +19,35 @@ export default function Navbar() {
         return (
             <>
                 <div className="navbar">
-                <span className="logo">
-                    <Link to="/" style={{ textDecoration: 'none' }}>
-                        <h5 id="navLogo">Capri</h5>
-                    </Link>
-                </span>
-                    <span className="links">
-                    <Link to="/warzywa" style={{ textDecoration: 'none' }}>
-                        <div className="navlink"><h5>Warzywa</h5></div>
-                    </Link>
-                    <Link to="/owoce" style={{ textDecoration: 'none' }}>
-                        <div className="navlink"><h5>Owoce</h5></div>
-                    </Link>
-                    <Link to="/slodycze" style={{ textDecoration: 'none' }}>
-                        <div className="navlink"><h5>Słodycze</h5></div>
-                    </Link>
-                    <Link to="/chemia" style={{ textDecoration: 'none' }}>
-                        <div className="navlink"><h5>Chemia</h5></div>
-                    </Link>
-                </span>
-                    <span className="navAccount">
-                    <Link to="/kontakt" style={{ textDecoration: 'none' }}>
-                        <i className="icon-phone navIcon"> </i>
-                    </Link>
-                    <i className="icon-basket navIcon" onClick={showBasket}> </i>
-                    <Link to="/ulubione" style={{ textDecoration: 'none' }}>
-                        <i className="icon-heart navIcon"> </i>
-                    </Link>
-                        {isUserLogged(loggedStatus)}
-                </span>
+                    <span className="logo">
+                        <Link to="/" style={{ textDecoration: 'none' }}>
+                            <h5 id="navLogo">Capri</h5>
+                        </Link>
+                    </span>
+                        <span className="links">
+                        <Link to="/warzywa" style={{ textDecoration: 'none' }}>
+                            <div className="navlink"><h5>Warzywa</h5></div>
+                        </Link>
+                        <Link to="/owoce" style={{ textDecoration: 'none' }}>
+                            <div className="navlink"><h5>Owoce</h5></div>
+                        </Link>
+                        <Link to="/slodycze" style={{ textDecoration: 'none' }}>
+                            <div className="navlink"><h5>Słodycze</h5></div>
+                        </Link>
+                        <Link to="/chemia" style={{ textDecoration: 'none' }}>
+                            <div className="navlink"><h5>Chemia</h5></div>
+                        </Link>
+                    </span>
+                        <span className="navAccount">
+                        <Link to="/kontakt" style={{ textDecoration: 'none' }}>
+                            <i className="icon-phone navIcon"> </i>
+                        </Link>
+                        <i className="icon-basket navIcon" onClick={showBasket}> </i>
+                        <Link to="/ulubione" style={{ textDecoration: 'none' }}>
+                            <i className="icon-heart navIcon"> </i>
+                        </Link>
+                            {isUserLogged(loggedStatus)}
+                    </span>
                 </div>
                 {isAdmin(role)}
                 <div className="basketDrop">
@@ -69,7 +66,7 @@ export default function Navbar() {
 const isAdmin = (userRole) => {
     if(userRole === "admin"){
         return (
-            <div className="adminNavbar basketDrop">
+            <div className="adminNavbar">
                 <span className="adminLinks">
                         <Link to="/dodajprodukty" style={{ textDecoration: 'none' }}>
                             <div><h5>Dodawanie produktów</h5></div>
@@ -79,9 +76,9 @@ const isAdmin = (userRole) => {
                             <div><h5>Kontakt</h5></div>
                         </Link>
 
-                    {/*<Link to="/design" style={{ textDecoration: 'none' }}>*/}
-                    {/*    <div><h5>Układ strony</h5></div>*/}
-                    {/*</Link>*/}
+                        <Link to="/design" style={{ textDecoration: 'none' }}>
+                            <div><h5>Układ strony</h5></div>
+                        </Link>
                     </span>
             </div>
         )

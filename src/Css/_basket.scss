@@ -1,0 +1,24 @@
+.basketMenuOutter {
+  @include flexCenter(column);
+  .basketSubmit {
+    text-align: center;
+    margin: 0 auto;
+    button {
+      @include OhOrangeButton();
+    }
+  }
+}
+
+.basketMenuInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  @include flexCenter(row);
+  .productDiv {
+    height: 450px;
+    h4 {
+      margin: 0 auto;
+      cursor: pointer;
+      color: red;
+    }
+  }
+}

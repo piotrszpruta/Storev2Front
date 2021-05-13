@@ -5,9 +5,6 @@ import { withRouter } from "react-router-dom";
 // Redux
 import {logOut} from "../Redux/actions/index"
 
-// Css
-import "../Css/ProductManagment.css"
-
 function EditProducts(props){
     const role = useSelector(state => state.isLogged.role)
     const [products, setProducts] = useState()
@@ -115,7 +112,7 @@ function EditProducts(props){
 
     if(role === "admin"){
         return (
-            <div className="center addProducts">
+            <div className="center editProducts">
                 <h1 id="response"> </h1>
                 <h2>Edycja produktu</h2>
                 <form onClick={ClearData}>

@@ -7,10 +7,8 @@ import {useSelector, useDispatch} from "react-redux";
 import {logIn} from "./Redux/actions/index"
 
 // Css
-import "./Css/General.css"
+import "./Css/style.css"
 import "./Css/fontello/css/fontello.css"
-import "./Css/Addons.css"
-import "./Css/Account.css"
 
 // My modules
 import Navbar from "./Generic/Navbar"

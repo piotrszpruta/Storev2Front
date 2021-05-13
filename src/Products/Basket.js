@@ -4,8 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 // Redux data
 import {logOut, removeBasket, clearBasket} from "../Redux/actions/index"
 
-import "../Css/Basket.css"
-
 export default function Basket(){
     let data = {}
     const dispatch = useDispatch()

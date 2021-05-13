@@ -1,0 +1,35 @@
+.accountForm {
+  max-width: 500px;
+  @include fullPage();
+  text-align: center;
+  @include flexCenter(column);
+  form {
+    background: #a3a3a3;
+    width: 400px;
+    color: white;
+    font-size: larger;
+    @include flexCenter(column);
+    button {
+      @include OhOrangeButton();
+    }
+    input {
+      background: none;
+      border: none;
+      border-bottom: 2px solid white;
+      transition: 0.4s all ease-in-out;
+      &:focus {
+        border-bottom: 2px solid $OhOrange;
+        outline: none;
+        transition: 0.4s all ease-in-out;
+      }
+    }
+  }
+}
+
+.formRegister form {
+  height: 450px;
+}
+
+.formLogin form {
+  height: 350px;
+}

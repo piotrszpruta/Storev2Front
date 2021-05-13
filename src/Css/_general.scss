@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #dedede;
+}
+
+.content {
+  padding-top: 8vh;
+}
+
+.center {
+  @include flexCenter(column);
+}
+
+.fourOhFour {
+  max-width: 500px;
+  @include fullPage()
+}
+
+.fourOhFour h2 {
+  margin-top: 50px;
+  color: $OhOrange;
+}

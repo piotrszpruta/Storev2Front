@@ -5,8 +5,6 @@ import { withRouter } from "react-router-dom";
 // Redux
 import {logOut} from "../Redux/actions/index"
 
-// Css
-import "../Css/ProductManagment.css"
 
 function AddProducts(props){
     const role = useSelector(state => state.isLogged.role)

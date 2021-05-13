@@ -1,14 +1,24 @@
-//  SCSS czyli linia po lini. Pierw vary, potem importy jeśli vary wchodzą w import
+// Variables
 @import "vars";
+@import "mixins";
 
-//  Import pliku
-@import 'header';
+// Files
 
-.contact {
-    // @include flexCenter(row, blue)
-    // Extend = rozszerz o klasę === klonuj jej css
-    @extend header;
-    background: red;
-    // Scss wspiera obliczenia
-    width: 100% - 20%;
-}
+// General
+@import "general";
+@import "navbar";
+
+// Basket and dropdowns
+@import "adminDrop";
+@import "basket";
+@import "basketDrop";
+
+// Account
+@import "account";
+@import "contact";
+
+// Home page
+@import "home";
+
+// Products
+@import "products";
