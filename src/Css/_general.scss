@@ -9,10 +9,6 @@ body {
   background: #dedede;
 }
 
-.content {
-  padding-top: 8vh;
-}
-
 .center {
   @include flexCenter(column);
 }
@@ -25,4 +21,17 @@ body {
 .fourOhFour h2 {
   margin-top: 50px;
   color: $OhOrange;
+}
+
+@media only screen and (min-width:900px) {
+  .content {
+    padding-top: 8vh;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  .content {
+    padding-top: 2vh;
+    padding-bottom: 12vh;
+  }
 }

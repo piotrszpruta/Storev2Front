@@ -2,16 +2,12 @@
   @include flexCenter(row);
   @include fullPage();
   .info {
-    max-width: 800px;
     margin: 0 auto;
     color: $OhOrange;
-    font-size: 5em;
     font-family: Helvetica, cursive;
     text-align: center;
   }
   .product {
-    width: 700px;
-    height: 80vh;
     margin: 0 auto;
     border-radius: 10px 10px 10px 15px;
     background-size: 160% 100%;
@@ -25,23 +21,15 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
-    height: 55vh;
-    width: 400px;
-    max-width: 600px;
     text-align: center;
-    @include flexCenter(column);
     font-size: xx-large;
-    filter: grayscale(70%);
     transition: 0.4s all ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @include flexCenter(column);
     h1 {
       color: white;
       background: rgba(249, 103, 59, 0.5);
-    }
-    &:hover {
-      height: 60vh;
-      width: 450px;
-      filter: grayscale(0%);
-      transition: 0.4s all ease-in-out;
     }
   }
 }
@@ -53,19 +41,13 @@
     border-bottom-right-radius: 10%;
     border-top-right-radius: 10%;
     transform: rotate(180deg);
-    max-width: 850px;
-    height: 550px;
   }
   span {
-    max-width: 700px;
-    color: $OhOrange;
-    font-size: 2.5em;
-    letter-spacing: 1.6px;
+    letter-spacing: 1.5px;
     font-family: Helvetica, cursive;
     text-align: center;
     h1 {
-      margin-bottom: 30px;
-      color: $OhOrange;
+      color: #5e5e5e;
     }
   }
 }
@@ -129,11 +111,9 @@
     max-width: 350px;
     height: 500px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    @include flexCenter(column);
+    margin-top: 10px;
+    margin-bottom: 10px;
     h1 {
       color: $OhOrange;
     }
@@ -159,4 +139,126 @@
   justify-content: space-around;
 }
 
+@media only screen and (min-width:1500px) {
+  .thirdBanner {
+    img {
+      max-width: 800px;
+      height: 550px;
+    }
+    span {
+      max-width: 700px;
+      h1 {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
 
+@media only screen and (max-width:1500px) {
+  .info {
+    font-size: 4em;
+    max-width: 400px;
+  }
+  .product {
+    width: 500px;
+    height: 70vh;
+  }
+  .thirdBanner {
+    img {
+      max-width: 550px;
+      height: 400px;
+    }
+    span {
+      max-width: 450px;
+      h1 {
+        margin-bottom: 30px;
+        font-size: 2em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width:1400px) {
+  .info {
+    font-size: 5em;
+    max-width: 800px;
+  }
+  .product {
+    width: 700px;
+    height: 80vh;
+  }
+}
+
+@media only screen and (min-width:1000px) {
+  .image {
+    height: 55vh;
+    width: 400px;
+    max-width: 600px;
+    font-size: xx-large;
+    filter: grayscale(70%);
+    &:hover {
+      height: 60vh;
+      width: 450px;
+      filter: grayscale(0%);
+      transition: 0.4s all ease-in-out;
+    }
+  }
+}
+
+@media only screen and (max-width:1000px) {
+  .info {
+    font-size: 2em;
+    max-width: 200px;
+  }
+  .product {
+    width: 500px;
+    height: 50vh;
+  }
+  .image {
+    height: 40vh;
+    width: 200px;
+    max-width: 600px;
+    font-size: xx-large;
+  }
+  .thirdBanner {
+    img {
+      max-width: 400px;
+      height: 300px;
+    }
+    span {
+      max-width: 400px;
+      h1 {
+        margin-bottom: 30px;
+        font-size: 1.8em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width:900px) {
+}
+
+@media only screen and (max-width:900px) {
+  .info {
+    font-size: 2em;
+    max-width: 200px;
+  }
+  .product {
+    width: 400px;
+    height: 50vh;
+  }
+  .thirdBanner {
+    img {
+      max-width: 400px;
+      height: 300px;
+    }
+    span {
+      background: rgba(241, 240, 240, 1);
+      max-width: 100%;
+      h1 {
+        margin-bottom: 30px;
+        font-size: 1.8em;
+      }
+    }
+  }
+}

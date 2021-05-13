@@ -9,22 +9,29 @@ export default function Navbar() {
     const dispatch = useDispatch()
 
     const role = useSelector(state => state.isLogged.role)
-    const loggedStatus = useSelector(state => state.isLogged.isLogged)
     const basketStatus = useSelector(state => state.basket)
 
     const showBasket = () => {
         document.querySelector(".basketDrop").classList.toggle("basketDrop-active")
     }
 
+    const toggleNav = () => {
+        document.querySelector(".navbar").classList.toggle("navbar-active")
+        document.querySelector(".navbar").classList.toggle("navbar-inactive")
+
+        document.querySelector(".burger").classList.toggle("burger-active")
+        document.querySelector(".burger").classList.toggle("burger-inactive")
+    }
+
         return (
             <>
-                <div className="navbar">
+                <div className="navbar navbar-inactive">
                     <span className="logo">
                         <Link to="/" style={{ textDecoration: 'none' }}>
                             <h5 id="navLogo">Capri</h5>
                         </Link>
                     </span>
-                        <span className="links">
+                    <span className="links" onClick={toggleNav}>
                         <Link to="/warzywa" style={{ textDecoration: 'none' }}>
                             <div className="navlink"><h5>Warzywa</h5></div>
                         </Link>
@@ -38,7 +45,7 @@ export default function Navbar() {
                             <div className="navlink"><h5>Chemia</h5></div>
                         </Link>
                     </span>
-                        <span className="navAccount">
+                    <span className="navAccount" onClick={toggleNav}>
                         <Link to="/kontakt" style={{ textDecoration: 'none' }}>
                             <i className="icon-phone navIcon"> </i>
                         </Link>
@@ -46,8 +53,15 @@ export default function Navbar() {
                         <Link to="/ulubione" style={{ textDecoration: 'none' }}>
                             <i className="icon-heart navIcon"> </i>
                         </Link>
-                            {isUserLogged(loggedStatus)}
+                        <Link to="/konto" style={{ textDecoration: 'none' }}>
+                            <i className="icon-adult navIcon loginIcon"> </i>
+                        </Link>
                     </span>
+                </div>
+                <div className="burger" onClick={toggleNav}>
+                    <div className="line1"> </div>
+                    <div className="line2"> </div>
+                    <div className="line3"> </div>
                 </div>
                 {isAdmin(role)}
                 <div className="basketDrop">
@@ -81,22 +95,6 @@ const isAdmin = (userRole) => {
                         </Link>
                     </span>
             </div>
-        )
-    }
-}
-
-const isUserLogged = (status) => {
-    if(status === true){
-        return (
-            <Link to="/konto" style={{ textDecoration: 'none' }}>
-                <i className="icon-adult navIcon loginIcon"> </i>
-            </Link>
-        )
-    } else {
-        return (
-            <Link to="/konto" style={{ textDecoration: 'none' }}>
-                <div className="navIcon"><h5>Moje konto</h5></div>
-            </Link>
         )
     }
 }

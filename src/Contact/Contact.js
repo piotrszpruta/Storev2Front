@@ -48,13 +48,14 @@ export default function Contact(){
                 body: JSON.stringify(body)
             })
             const data = await res.json();
-            console.log(data)
             if(data.message){
                 if(data.message === "Token invalid"){
                     dispatch(logOut())
                 }
             } else {
-                return data
+                if(data.type === "success"){
+                    document.querySelector(".form").innerHTML = '<h3 className="response">Wiadomość została wysłana</h3>'
+                }
             }
         } catch (e) {
             console.log(e)
@@ -72,8 +73,8 @@ export default function Contact(){
                     <h4>{item.topic}</h4>
                     <h3>Zapytanie: </h3>
                     <h4>{item.data}</h4>
-                    <h3>Dzień miesiąc rok: {(item["timestamp"].split('T'))[0]}</h3>
-                    <h3>Godzina: {(item["timestamp"].split('T'))[1].slice(0, -5)}</h3>
+                    <h6>Dzień miesiąc rok: {(item["timestamp"].split('T'))[0]}</h6>
+                    <h6>Godzina: {(item["timestamp"].split('T'))[1].slice(0, -5)}</h6>
                 </div>
             )
         })
@@ -92,15 +93,15 @@ export default function Contact(){
                 return mapMessages()
             } else {
                 return (
-                    <div>
+                    <>
                         <div className="form">
                             <h2>Skontaktuj się z nami</h2>
                             <form onSubmit={sendMessage}>
                                 <label htmlFor="topic">Temat wiadomości</label>
-                                <input type="text" name="topic"/>
+                                <input type="text" name="topic" required/>
 
                                 <label htmlFor="message">Treść wiadomości</label>
-                                <input type="text" name="message"/>
+                                <input type="text" name="message" required/>
 
                                 <button>Wyśli</button>
                             </form>
@@ -108,7 +109,7 @@ export default function Contact(){
                         <div className="contactMessages">
                             {mapMessages()}
                         </div>
-                    </div>
+                    </>
                 )
             }
         }

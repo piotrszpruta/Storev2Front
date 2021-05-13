@@ -1,5 +1,12 @@
 #Changelog
 
+## v0.2 ( Bigger update ):
+### Visual
+- Finaly added mobile view and responsive website. 
+
+### Under the hoood
+- Removed some unnecessary css
+
 ## 0.11:
 ### Visual
 - Removed admin's navbar non existing buttons
