@@ -1,5 +1,10 @@
 #Changelog
 
+## v0.21:
+### Visual
+- Fixed rendering orders
+- Redesigned basket component
+
 ## v0.2 ( Bigger update ):
 ### Visual
 - Finaly added mobile view and responsive website. 

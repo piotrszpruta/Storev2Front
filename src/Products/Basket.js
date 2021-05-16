@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 // Redux data
@@ -7,6 +7,8 @@ import {logOut, removeBasket, clearBasket} from "../Redux/actions/index"
 export default function Basket(){
     let data = {}
     const dispatch = useDispatch()
+
+    const [done, setDone] = useState(false)
 
     const basketStatus = useSelector(state => state.basket)
     const loggedStatus = useSelector(state => state.isLogged.isLogged)
@@ -48,19 +50,25 @@ export default function Basket(){
                 }
             }
 
-        let body = {
-            ids: ids,
-            amounts: amounts,
-            summary: document.querySelector(".basketMoney").innerHTML
-        }
+            let body = {
+                ids: ids,
+                amounts: amounts,
+                summary: document.querySelector(".basketMoney").innerHTML
+            }
 
-            send(body)
-                .then(data => {
-                    if(data.type === "success"){
-                        document.querySelector(".success").innerHTML = "Produkty zostały zamówione"
-                        dispatch(clearBasket())
-                    }
-                })
+            if(body["ids"].length === 0 || body["amounts"].length === 0){
+                setTimeout(() => {
+                    document.querySelector(".errors").innerHTML = "Wygląda na to, iż nie zostały wybrane żadne produkty."
+                }, 100)
+            } else {
+                send(body)
+                    .then(data => {
+                        if(data.type === "success"){
+                            setDone(true)
+                            dispatch(clearBasket())
+                        }
+                    })
+            }
         } else {
             setTimeout(() => {
                 document.querySelector(".errors").innerHTML = "Wygląda na to że nie jesteś zalogowany. W celu zakupienia produktów, zaloguj się"
@@ -77,7 +85,6 @@ export default function Basket(){
                 body: JSON.stringify(body)
             })
             const data = await res.json();
-            console.log(data)
             if(data.message){
                 if(data.message === "Token invalid"){
                     dispatch(logOut())
@@ -93,26 +100,42 @@ export default function Basket(){
         }
     }
 
+    const didOrder = () => {
+        if(done === false){
+            return <h2>Wygląda na to, iż nie wybrałeś żadnych produktów</h2>
+        } else {
+            return <h2>Produkty zostały zamówione</h2>
+        }
+    }
+
     const ClearData = () => {
         document.querySelector('.errors').innerHTML = "";
     }
 
-    return(
-    <div className="basketMenuOutter" onClick={ClearData}>
-        <div className="basketSubmit">
-            <h1 className="errors" style={{color: "red"}}> </h1>
-            <h1 className="success" style={{color: "green"}}> </h1>
-            <h2>Podsumowanie koszyka</h2>
-            <hr/>
-            <span>
+    const basketNotEmpty = () => {
+        return (
+            <>
+                <div className="basketSubmit" onClick={ClearData}>
+                    <h1 className="errors" style={{color: "red"}}> </h1>
+                    <h1 className="success" style={{color: "green"}}> </h1>
+                    <h2>Podsumowanie koszyka</h2>
+                    <hr/>
+                    <span>
                 <h3 style={{display: "inlineBlock"}}>Razem wychodzi: </h3>
                 <h3 style={{display: "inlineBlock"}} className="basketMoney">0</h3>
-                <button onClick={basketSummary}>Zamów</button>
+                <button onClick={basketSummary} className="orderButton">Zamów</button>
             </span>
-        </div>
-        <div className="basketMenuInner">
-            {isBasketEmpty ? renderBasket() : "Wygląda na to, iż nie wybrałeś żadnych produktów"}
-        </div>
+                </div>
+                <div className="basketMenuInner" onClick={ClearData}>
+                    {renderBasket()}
+                </div>
+            </>
+        )
+    }
+
+    return(
+    <div className="basketMenuOutter">
+        {isBasketEmpty ? basketNotEmpty() : didOrder()}
     </div>
     )
 

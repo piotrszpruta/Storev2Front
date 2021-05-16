@@ -6,7 +6,7 @@ export default function ViewOrders(){
     const [products, setProducts] = useState()
 
     // Part for admin
-    const role = useSelector(state => state.isLogged.role)
+    const role = (useSelector(state => state.isLogged.role) === "admin")
 
     useEffect(() => {
         getData()
@@ -50,6 +50,7 @@ export default function ViewOrders(){
         if(orders === undefined){
             return "Loading"
         } else if(products === undefined) {
+            console.log(orders)
             let body = {
                 "data": "orders",
                 "dataType": []
@@ -61,55 +62,59 @@ export default function ViewOrders(){
 
             getProducts(body)
                 .then(data => {
-                    let id;
-                    orders.forEach(order => {
-                        let ids = order.produktsid.split(',')
-                        let amounts = order.amount.split(',')
+                    let productsList = []
 
-                        data.forEach(product => {
-                            for(let x=0;x < amounts.length;x++){
-                                if(product.id === parseInt(ids[x])){
-                                    if(id !== order["userid"]) {
-                                        id = order["userid"]
-                                    }
-                                    product["amount"] = amounts[x]
-                                    product["userid"] = order["userid"]
-                                    product["time"] = (order["timestamp"].split('T'))[0]
-                                    product["timestamp"] = order["timestamp"]
+                    orders.forEach(order => {
+
+                        let items = order.produktsid.split(',')
+                        let amounts = order.amount.split(",")
+
+                        for(let y = 0; y < items.length;y++){
+                            data.forEach(product => {
+                                if(parseInt(items[y]) === product.id){
+                                    productsList.push([order.timestamp, order["name"], order["userid"], amounts[y], product, order['done']])
                                 }
-                            }
-                        })
+                            })
+
+                        }
+
                     })
-                    data.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
-                    setProducts(data)
+                    productsList.sort((a, b) => a[0].localeCompare(b[0]));
+                    setProducts(productsList)
                 })
         } else {
-            let timeStamp;
-            return products.map(item => {
-                if(item.time !== timeStamp){
-                    timeStamp = item.time
+            let time;
+            return products.map(product => {
+                if(time !== product[0]){
+                    time = product[0]
                     return (
-                        <React.Fragment key={item.timestamp}>
-                            <h3 style={{width: "100%", textAlign: "center"}}>{item.time}</h3>
-                            <div key={`${item.id}/${item.userid}/${item.timestamp}`} className="productDiv">
-                                <img src={item.img} alt=""/>
-                                <h3>{item.nazwa}</h3>
-                                <h4>Rozmiar: {item.rozmiar}</h4>
-                                <h4>Cena: {item.cena} zł</h4>
-                                <h4>Kupiono: {item.amount}</h4>
+                        <React.Fragment key={`${product[4].id}/${product[2]}/${time}`}>
+                            <h3 style={{width: "100%", textAlign: "center"}}>{time}</h3>
+                            <div className="productDiv" style={{height: "550px"}}>
+                                <img src={product[4].img} alt=""/>
+                                <h3>{product[4].nazwa}</h3>
+                                <h4>Rozmiar: {product[4].rozmiar}</h4>
+                                <h4>Cena: {product[4].cena} zł</h4>
+                                <h4>Kupiono: {product[3]}</h4>
+                                <h4>Status: {product[5]}</h4>
+                                {role ? <h4>Kto zamówił: {product[1]}</h4> : ""}
                             </div>
                         </React.Fragment>
-                                )
+                    )
                 } else {
                     return (
-                        <div key={`${item.id}/${item.userid}/${item.timestamp}`} className="productDiv">
-                            <img src={item.img} alt=""/>
-                            <h3>{item.nazwa}</h3>
-                            <h4>Rozmiar: {item.rozmiar}</h4>
-                            <h4>Cena: {item.cena} zł</h4>
-                            <h4>Kupiono: {item.amount}</h4>
-                        </div>
-                                )
+                        <React.Fragment key={`${product[4].id}/${product[2]}/${time}`}>
+                            <div className="productDiv" style={{height: "550px"}}>
+                                <img src={product[4].img} alt=""/>
+                                <h3>{product[4].nazwa}</h3>
+                                <h4>Rozmiar: {product[4].rozmiar}</h4>
+                                <h4>Cena: {product[4].cena} zł</h4>
+                                <h4>Kupiono: {product[3]}</h4>
+                                <h4>Status: {product[5]}</h4>
+                                {role ? <h4>Kto zamówił: {product[1]}</h4> : ""}
+                            </div>
+                        </React.Fragment>
+                    )
                 }
             })
         }
