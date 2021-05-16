@@ -1,8 +1,12 @@
 import React from 'react'
-import {useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
+import { motion } from "framer-motion";
 
 // Redux data
 import {logOut} from "../Redux/actions/index"
+
+// Animation
+import { opacity } from "../Animation/Variables"
 
 // My modules
 import LogOut from "./Logout"
@@ -11,8 +15,6 @@ import ViewOrders from "./ViewOrders"
 export default function LoggedUser(){
 
     const dispatch = useDispatch()
-
-    const role = useSelector(state => state.isLogged.role)
 
     const removeToken = async () => {
         LogOut()
@@ -24,10 +26,15 @@ export default function LoggedUser(){
     }
 
     return (
-        <div className="center">
+        <motion.div className="center"
+             variants={opacity}
+             initial="init"
+             animate="visible"
+             exit="exit"
+        >
             <button onClick={removeToken}>Log out</button>
             Logged user
             <ViewOrders/>
-        </div>
+        </motion.div>
     )
 }

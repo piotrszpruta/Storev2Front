@@ -332,7 +332,7 @@ body {
 }
 .accountForm form {
   background: #a3a3a3;
-  width: 400px;
+  max-width: 400px;
   color: white;
   font-size: larger;
   display: flex;
@@ -376,9 +376,20 @@ body {
 }
 
 .formLogin form {
-  height: 350px;
+  height: auto;
+  margin: 20px;
 }
 
+@media only screen and (min-width: 900px) {
+  .accountForm form {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .accountForm form {
+    width: 300px;
+  }
+}
 .contactNoLogged {
   margin: 0 auto;
   height: 92vh;
@@ -472,12 +483,17 @@ body {
 
 .contactPage {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
+@media only screen and (max-width: 900px) {
+  .form {
+    margin-top: 25vh;
+  }
+}
 .banner {
   display: flex;
   flex-direction: row;
@@ -728,7 +744,7 @@ body {
 }
 @media only screen and (max-width: 900px) {
   .info {
-    font-size: 2em;
+    font-size: 2.5em;
     max-width: 200px;
   }
 
@@ -748,6 +764,10 @@ body {
   .thirdBanner span h1 {
     margin-bottom: 30px;
     font-size: 1.8em;
+  }
+
+  .sixthBanner span {
+    width: 90%;
   }
 }
 .productsDiv {
@@ -798,8 +818,8 @@ body {
 
   .productDiv {
     max-width: 450px;
+    max-height: 650px;
     width: 350px;
-    height: 440px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -820,7 +840,6 @@ body {
   .productDiv {
     max-width: 250px;
     width: 300px;
-    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;

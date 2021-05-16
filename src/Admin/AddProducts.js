@@ -1,10 +1,13 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 import { withRouter } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // Redux
 import {logOut} from "../Redux/actions/index"
 
+// Animation
+import { opacity } from "../Animation/Variables"
 
 function AddProducts(props){
     const role = useSelector(state => state.isLogged.role)
@@ -65,7 +68,12 @@ function AddProducts(props){
 
     if(role === "admin"){
         return (
-            <div className="center addProducts">
+            <motion.div className="center addProducts"
+                variants={opacity}
+                initial="init"
+                animate="visible"
+                exit="exit"
+            >
                 <h1 id="response"> </h1>
                 <h2>Dodawanie produktu</h2>
                 <form>
@@ -97,7 +105,7 @@ function AddProducts(props){
                     <button>Wyśli</button>
 
                 </form>
-            </div>
+            </motion.div>
         )
     } else {
         props.history.push("/");

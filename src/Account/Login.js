@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import {Link} from "react-router-dom";
 import {useDispatch} from "react-redux";
+import { motion } from "framer-motion";
 
 // Redux data
 import {logIn} from "../Redux/actions/index"
+
+// Animation
+import { opacity } from "../Animation/Variables"
 
 export default function Login(){
 
@@ -51,7 +55,13 @@ export default function Login(){
         }
 
     return (
-        <div className="accountForm formLogin">
+        <motion.div className="accountForm formLogin"
+             variants={opacity}
+             initial="init"
+             animate="visible"
+             exit="exit"
+
+        >
             <form onSubmit={login}>
                 <h2 className="LoginHeader">Logowanie</h2>
 
@@ -70,7 +80,7 @@ export default function Login(){
                 <button>Zaloguj</button>
             </form>
             <h1>Nie posiadasz konta ?<Link to={`/rejestracja`} style={{display: "block"}}>Zarejestruj</Link></h1>
-        </div>
+        </motion.div>
     )
 
 }

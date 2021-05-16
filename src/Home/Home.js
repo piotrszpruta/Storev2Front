@@ -10,25 +10,14 @@ import FifthPage from "./Parts/FifthPage"
 import SixthPage from "./Parts/SixthPage"
 import SeventhPage from "./Parts/SeventhPage"
 
-const containerVariants = {
-    init: {
-        opacity: 0,
-    },
-    visible: {
-        opacity: 1,
-        transition: { delay: 0.5, duration: 1 }
-    },
-    exit: {
-        x: "-100vw",
-        transition: { ease: "easeInOut" }
-    }
-}
+// Animation
+import { opacity } from "../Animation/Variables"
 
 class MainMenu extends React.Component{
     render(){
         return (
             <motion.div
-                variants={containerVariants}
+                variants={opacity}
                 initial="init"
                 animate="visible"
                 exit="exit"

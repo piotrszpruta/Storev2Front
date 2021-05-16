@@ -240,7 +240,7 @@
 
 @media only screen and (max-width:900px) {
   .info {
-    font-size: 2em;
+    font-size: 2.5em;
     max-width: 200px;
   }
   .product {
@@ -259,6 +259,11 @@
         margin-bottom: 30px;
         font-size: 1.8em;
       }
+    }
+  }
+  .sixthBanner {
+    span {
+      width: 90%;
     }
   }
 }

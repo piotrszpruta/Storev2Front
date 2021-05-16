@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react'
+import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
+import { motion } from "framer-motion";
 
 // Redux data
 import {logOut} from "../Redux/actions/index"
 
+// Animation
+import { opacity } from "../Animation/Variables"
 
 export default function Contact(){
     const [contact, setContact] = useState()
@@ -89,7 +93,12 @@ export default function Contact(){
         } else if(contact.Type !== undefined){
             return (
             <div className="contactNoLogged">
-                <h3>Wygląda na to, iż nie jesteś zalogowany. W celu skontaktowania się z nami, zaloguj się</h3>
+                <span>
+                    <h3>Wygląda na to, iż nie jesteś zalogowany. W celu skontaktowania się z nami, zaloguj się</h3>
+                    <Link to="/konto" style={{ textDecoration: 'none' }}>
+                       <h2>Zaloguj</h2>
+                    </Link>
+                </span>
             </div>)
         } else {
             if(role === "admin"){
@@ -119,8 +128,13 @@ export default function Contact(){
     }
 
     return (
-        <div className="contactPage">
+        <motion.div className="contactPage"
+             variants={opacity}
+             initial="init"
+             animate="visible"
+             exit="exit"
+        >
             {renderData()}
-        </div>
+        </motion.div>
     )
 }

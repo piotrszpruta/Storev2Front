@@ -26,8 +26,8 @@
   }
   .productDiv {
     max-width: 450px;
+    max-height: 650px;
     width: 350px;
-    height: 440px;
     @include flexCenter(column);
     img {
       width: 70%;
@@ -44,7 +44,6 @@
   .productDiv {
     max-width: 250px;
     width: 300px;
-    height: 400px;
     @include flexCenter(column);
     img {
       width: 80%;

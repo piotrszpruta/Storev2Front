@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import { motion } from "framer-motion";
 
 // Redux data
 import {addBasket, logOut} from "../Redux/actions/index"
+
+// Animation
+import { opacity } from "../Animation/Variables"
 
 export default function Products(data){
     const [category, setCategory] = useState("home")
@@ -51,7 +55,14 @@ export default function Products(data){
 
     const renderData = () => {
         if(products === undefined){
-            return "Loading"
+            return <motion.div
+                variants={opacity}
+                initial="init"
+                animate="visible"
+                exit="exit"
+            >
+                Wczytywanie
+            </motion.div>
         } else {
             return products.map(item => {
                 if(item.dostepnosc > 0){
@@ -162,7 +173,13 @@ export default function Products(data){
     }
 
     return (
-        <div className="productsDiv">
+        <div className="productsDiv"
+             variants={opacity}
+             initial="init"
+             animate="visible"
+             exit="exit"
+
+        >
             {renderData()}
         </div>
     )

@@ -1,32 +1,30 @@
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
 import { motion } from "framer-motion";
 
 // Redux
 import {removeBasket} from "../Redux/actions/index"
 
-const svgVariants = {
-    init: {
-        opacity: 0
-    },
-    finished: {
-        opacity: 1,
-        transition: {
-            duration: 1,
-            delay: 0.5
-        }
-    }
-}
+// Animation
+import { slideRight } from "../Animation/Variables"
 
 export default function Navbar() {
 
+    const history = useHistory();
+
     const dispatch = useDispatch()
 
-    const role = useSelector(state => state.isLogged.role)
+    const role = useSelector(state => state.isLogged.role) === "admin"
     const basketStatus = useSelector(state => state.basket)
 
     const showBasket = () => {
-        document.querySelector(".basketDrop").classList.toggle("basketDrop-active")
+        if(window.innerWidth < 900){
+            history.push({
+                pathname: '/koszyk'
+            })
+        } else {
+            document.querySelector(".basketDrop").classList.toggle("basketDrop-active")
+        }
     }
 
     const toggleNav = () => {
@@ -40,9 +38,9 @@ export default function Navbar() {
         return (
             <>
                 <motion.div className="navbar navbar-inactive"
-                    variants={svgVariants}
+                    variants={slideRight}
                     initial="init"
-                    animate="finished"
+                    animate="visible"
                 >
                     <motion.span className="logo"
                       initial={{
@@ -77,7 +75,7 @@ export default function Navbar() {
                         <Link to="/kontakt" style={{ textDecoration: 'none' }}>
                             <i className="icon-phone navIcon"> </i>
                         </Link>
-                        <i className="icon-basket navIcon" onClick={showBasket}> </i>
+                        {role ? "" : <i className="icon-basket navIcon" onClick={showBasket}> </i>}
                         <Link to="/ulubione" style={{ textDecoration: 'none' }}>
                             <i className="icon-heart navIcon"> </i>
                         </Link>
@@ -92,7 +90,7 @@ export default function Navbar() {
                     <div className="line3"> </div>
                 </div>
                 {isAdmin(role)}
-                <div className="basketDrop">
+                {role ? "" : <div className="basketDrop">
                     {basketStatus.map(item => {
                         return <span key={item.id} id={item.id} className="basketItem"><img src={item.img} alt="img"/><h4>{item.name}</h4><h3 onClick={(e) => dispatch(removeBasket(e.target.parentElement.id))}>X</h3></span>
                     })}
@@ -100,13 +98,13 @@ export default function Navbar() {
                     <Link to="/koszyk" style={{ textDecoration: 'none' }}>
                         <div><h5>Sprawdź pełny koszyk</h5></div>
                     </Link>
-                </div>
+                </div>}
             </>
         )
 }
 
-const isAdmin = (userRole) => {
-    if(userRole === "admin"){
+const isAdmin = (role) => {
+    if(role){
         return (
             <div className="adminNavbar">
                 <span className="adminLinks">

@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 import { withRouter } from "react-router-dom";
+import { motion } from "framer-motion";
 
 // Redux
 import {logOut} from "../Redux/actions/index"
+
+// Animation
+import { opacity } from "../Animation/Variables"
 
 function EditProducts(props){
     const role = useSelector(state => state.isLogged.role)
@@ -112,7 +116,12 @@ function EditProducts(props){
 
     if(role === "admin"){
         return (
-            <div className="center editProducts">
+            <motion.div className="center editProducts"
+                variants={opacity}
+                initial="init"
+                animate="visible"
+                exit="exit"
+            >
                 <h1 id="response"> </h1>
                 <h2>Edycja produktu</h2>
                 <form onClick={ClearData}>
@@ -144,11 +153,18 @@ function EditProducts(props){
                     <button>Wyśli</button>
 
                 </form>
-            </div>
+            </motion.div>
         )
     } else {
         props.history.push("/");
-        return "It seem like you are not logged in"
+        return <motion.div
+            variants={opacity}
+            initial="init"
+            animate="visible"
+            exit="exit"
+        >
+            It seem like you are not logged in
+        </motion.div>
     }
 }
 

@@ -1,18 +1,25 @@
 #Changelog
 
-## v0.21:
+## v0.3 ( Bigger update ):
 ### Visual
-- Fixed showing data in ordered items
-- Few changes in contact page
+- Added animation to all files
+- Added animations folder for variables and data
+- Added new contact page
+- Fixed buggy heights for products for admin
+- Removed unnecessary icon for admins in navbar
+- Locked admin out from adding items to basket and buying them
+- Fixed few css mobile bugs
 
 ## v0.21:
 ### Visual
 - Fixed rendering orders
 - Redesigned basket component
+- Fixed showing data in ordered items
+- Few changes in contact page
 
 ## v0.2 ( Bigger update ):
 ### Visual
-- Finaly added mobile view and responsive website. 
+- Finally, added mobile view and responsive website. 
 
 ### Under the hoood
 - Removed some unnecessary css

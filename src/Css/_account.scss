@@ -5,7 +5,7 @@
   @include flexCenter(column);
   form {
     background: #a3a3a3;
-    width: 400px;
+    max-width: 400px;
     color: white;
     font-size: larger;
     @include flexCenter(column);
@@ -31,5 +31,18 @@
 }
 
 .formLogin form {
-  height: 350px;
+  height: auto;
+  margin: 20px
+}
+
+@media only screen and (min-width:900px) {
+  .accountForm form {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  .accountForm form {
+    width: 300px;
+  }
 }

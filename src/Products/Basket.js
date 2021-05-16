@@ -1,8 +1,12 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import { motion } from "framer-motion";
 
 // Redux data
 import {logOut, removeBasket, clearBasket} from "../Redux/actions/index"
+
+// Animation
+import { opacity } from "../Animation/Variables"
 
 export default function Basket(){
     let data = {}
@@ -102,9 +106,9 @@ export default function Basket(){
 
     const didOrder = () => {
         if(done === false){
-            return <h2>Wygląda na to, iż nie wybrałeś żadnych produktów</h2>
+            return <h2 className="center" style={{ height: "92vh" }}>Wygląda na to, iż nie wybrałeś żadnych produktów</h2>
         } else {
-            return <h2>Produkty zostały zamówione</h2>
+            return <h2 className="center">Produkty zostały zamówione</h2>
         }
     }
 
@@ -134,7 +138,12 @@ export default function Basket(){
     }
 
     return(
-    <div className="basketMenuOutter">
+    <div className="basketMenuOutter"
+         variants={opacity}
+         initial="init"
+         animate="visible"
+         exit="exit"
+    >
         {isBasketEmpty ? basketNotEmpty() : didOrder()}
     </div>
     )

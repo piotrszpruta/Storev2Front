@@ -1,8 +1,12 @@
 import React from 'react'
-import { withRouter, Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 
-function Register(){
+// Animation
+import { opacity } from "../Animation/Variables"
+
+export default function Register(){
 
     const history = useHistory();
 
@@ -45,7 +49,12 @@ function Register(){
     }
 
     return (
-        <div className="accountForm formRegister">
+        <motion.div className="accountForm formRegister"
+             variants={opacity}
+             initial="init"
+             animate="visible"
+             exit="exit"
+        >
             <form onSubmit={register}>
                 <h2>Rejestracja</h2>
 
@@ -75,8 +84,6 @@ function Register(){
                 <button>Zarejestruj</button>
             </form>
             <h1>Posiadasz już konto?<Link to={`/logowanie`} style={{display: "block"}}>Zaloguj</Link></h1>
-        </div>
+        </motion.div>
     )
 }
-
-export default withRouter(Register)
