@@ -61,7 +61,7 @@ export default function Products(data){
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
                             <h4>Cena: {item.cena} zł</h4>
-                            <button onClick={(e) => {
+                            {isAdmin ? "" : <button onClick={(e) => {
                                 dispatch(
                                     addBasket(
                                         e.target.parentElement.id,
@@ -71,7 +71,8 @@ export default function Products(data){
                                         e.target.parentElement.children[3].innerHTML,
                                     )
                                 )
-                            }}>Dodaj do koszyka</button>
+                            }}>Dodaj do koszyka</button>}
+
                             {isAdmin ? (
                                 <Link to={{
                                     pathname: '/edytujprodukty',
@@ -116,7 +117,7 @@ export default function Products(data){
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
                             <h4>Cena: {item.cena} zł</h4>
-                            <button disabled>Produkt chwilowo niedostępny</button>
+                            {isAdmin ? "" : <button disabled>Produkt chwilowo niedostępny</button>}
                             {isAdmin ? (
                                 <Link to={{
                                     pathname: '/edytujprodukty',

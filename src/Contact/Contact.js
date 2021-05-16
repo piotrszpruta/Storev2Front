@@ -66,7 +66,6 @@ export default function Contact(){
     }
 
     const mapMessages = () => {
-        console.log(contact)
         return contact.map(item => {
             let didAnswer = item.answer.length > 0
             return (
