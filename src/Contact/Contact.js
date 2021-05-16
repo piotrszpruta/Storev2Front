@@ -66,7 +66,9 @@ export default function Contact(){
     }
 
     const mapMessages = () => {
+        console.log(contact)
         return contact.map(item => {
+            let didAnswer = item.answer.length > 0
             return (
                 <div key={item.id} className="contactMessage">
                     <h3>Temat: </h3>
@@ -75,6 +77,8 @@ export default function Contact(){
                     <h4>{item.data}</h4>
                     <h6>Dzień miesiąc rok: {(item["timestamp"].split('T'))[0]}</h6>
                     <h6>Godzina: {(item["timestamp"].split('T'))[1].slice(0, -5)}</h6>
+                    <h6>Autor: {item.email}</h6>
+                    {didAnswer ? <h6>Odpowiedź administratora: {item.answer}</h6>: <h6>Nie odpowiedziano</h6>}
                 </div>
             )
         })

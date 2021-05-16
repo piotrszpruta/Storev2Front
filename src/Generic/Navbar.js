@@ -1,8 +1,22 @@
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux";
+import { motion } from "framer-motion";
 
 // Redux
 import {removeBasket} from "../Redux/actions/index"
+
+const svgVariants = {
+    init: {
+        opacity: 0
+    },
+    finished: {
+        opacity: 1,
+        transition: {
+            duration: 1,
+            delay: 0.5
+        }
+    }
+}
 
 export default function Navbar() {
 
@@ -25,12 +39,26 @@ export default function Navbar() {
 
         return (
             <>
-                <div className="navbar navbar-inactive">
-                    <span className="logo">
+                <motion.div className="navbar navbar-inactive"
+                    variants={svgVariants}
+                    initial="init"
+                    animate="finished"
+                >
+                    <motion.span className="logo"
+                      initial={{
+                          x: -200
+                      }} animate={{
+                        x: 0
+                    }} transition={{
+                        delay: 2,
+                        type: "spring",
+                        // Stiffness = tylko spring
+                        stiffness: 50
+                    }}>
                         <Link to="/" style={{ textDecoration: 'none' }}>
                             <h5 id="navLogo">Capri</h5>
                         </Link>
-                    </span>
+                    </motion.span>
                     <span className="links" onClick={toggleNav}>
                         <Link to="/warzywa" style={{ textDecoration: 'none' }}>
                             <div className="navlink"><h5>Warzywa</h5></div>
@@ -57,7 +85,7 @@ export default function Navbar() {
                             <i className="icon-adult navIcon loginIcon"> </i>
                         </Link>
                     </span>
-                </div>
+                </motion.div>
                 <div className="burger" onClick={toggleNav}>
                     <div className="line1"> </div>
                     <div className="line2"> </div>

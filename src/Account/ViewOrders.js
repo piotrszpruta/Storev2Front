@@ -89,7 +89,7 @@ export default function ViewOrders(){
                     time = product[0]
                     return (
                         <React.Fragment key={`${product[4].id}/${product[2]}/${time}`}>
-                            <h3 style={{width: "100%", textAlign: "center"}}>{time}</h3>
+                            <h3 style={{width: "100%", textAlign: "center"}}>{time.slice(0, 10)}</h3>
                             <div className="productDiv" style={{height: "550px"}}>
                                 <img src={product[4].img} alt=""/>
                                 <h3>{product[4].nazwa}</h3>

@@ -2,6 +2,11 @@
 
 ## v0.21:
 ### Visual
+- Fixed showing data in ordered items
+- Few changes in contact page
+
+## v0.21:
+### Visual
 - Fixed rendering orders
 - Redesigned basket component
 
