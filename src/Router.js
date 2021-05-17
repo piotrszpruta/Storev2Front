@@ -5,6 +5,7 @@ import {useSelector} from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
 // Routes
+
 // Home
 import MainMenu from './Home/Home'
 // Account
@@ -25,6 +26,7 @@ import Contact from "./Contact/Contact"
 // Admin
 import AddProducts from "./Admin/AddProducts"
 import EditProducts from "./Admin/EditProducts"
+import AnswerContact from "./Admin/AnswerContact"
 
 function Routers() {
 
@@ -110,6 +112,13 @@ const loggedStatus = useSelector(state => state.isLogged.isLogged)
                     ) : (
                         <Redirect to="/"/>
                         )
+                )}/>
+                <Route exact path="/dodajodpowiedz" render={() => (
+                    loggedStatus ? (
+                        <AnswerContact/>
+                    ) : (
+                        <Redirect to="/"/>
+                    )
                 )}/>
 
                 {/* 404 */}

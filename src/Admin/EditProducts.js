@@ -76,12 +76,14 @@ function EditProducts(props){
                 cena: e.target.cena.value,
                 typ: e.target.typ.value,
                 opis: e.target.opis.value,
-                img: "/Img/" + e.target.img.value
+                img: "/Img/" + e.target.img.value,
+                img2: "/Img/" + e.target.img2.value
             }
 
             send(body)
                 .then(data => {
                     document.querySelector("#response").innerHTML = data.type
+                    document.querySelector("form").innerHTML = ""
                 })
         })
     }
@@ -110,10 +112,6 @@ function EditProducts(props){
         }
     }
 
-    const ClearData = () => {
-        document.querySelector('#response').innerHTML = '';
-    }
-
     if(role === "admin"){
         return (
             <motion.div className="center editProducts"
@@ -124,7 +122,7 @@ function EditProducts(props){
             >
                 <h1 id="response"> </h1>
                 <h2>Edycja produktu</h2>
-                <form onClick={ClearData}>
+                <form>
 
                     <label htmlFor="nazwa">Nazwa produktu</label>
                     <input type="text" name="nazwa" required/>
@@ -150,6 +148,9 @@ function EditProducts(props){
                     <label htmlFor="img">Zdjęcie produktu ( nazwa z rozszerzeniem )</label>
                     <input type="text" name="img" required/>
 
+                    <label htmlFor="img">Zdjęcia produktu po przecinku ( nazwa z rozszerzeniem )</label>
+                    <input type="text" name="img2" required/>
+
                     <button>Wyśli</button>
 
                 </form>
@@ -163,7 +164,7 @@ function EditProducts(props){
             animate="visible"
             exit="exit"
         >
-            It seem like you are not logged in
+           Wygląda na to, że nie jesteś zalogowany
         </motion.div>
     }
 }

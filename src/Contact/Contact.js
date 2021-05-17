@@ -13,8 +13,8 @@ export default function Contact(){
     const [contact, setContact] = useState()
 
     const dispatch = useDispatch()
-
     const role = useSelector(state => state.isLogged.role)
+    const isAdmin = role === "admin"
 
     useEffect(() => {
         getData()
@@ -78,10 +78,16 @@ export default function Contact(){
                     <h4>{item.topic}</h4>
                     <h3>Zapytanie: </h3>
                     <h4>{item.data}</h4>
-                    <h6>Dzień miesiąc rok: {(item["timestamp"].split('T'))[0]}</h6>
+                    <h6>Data: {(item["timestamp"].split('T'))[0]}</h6>
                     <h6>Godzina: {(item["timestamp"].split('T'))[1].slice(0, -5)}</h6>
-                    <h6>Autor: {item.email}</h6>
+                    {/*{isAdmin ? <h6>Autor: {item.email}</h6> : ""}*/}
                     {didAnswer ? <h6>Odpowiedź administratora: {item.answer}</h6>: <h6>Nie odpowiedziano</h6>}
+                    {isAdmin ? <Link to={{
+                        pathname: '/dodajodpowiedz',
+                        state: { id: item.id }
+                    }} style={{ textDecoration: 'none' }}>
+                        <button style={{ width: "200px" }}>Odpowiedz</button>
+                    </Link> : ""}
                 </div>
             )
         })
@@ -89,20 +95,42 @@ export default function Contact(){
 
     const renderData = () => {
         if(contact === undefined){
-            return "Loading"
+            return <motion.div className="fullCenter"
+               variants={opacity}
+               initial="init"
+               animate="visible"
+               exit="exit"
+            >
+                <h2>Wczytywanie</h2>
+            </motion.div>
         } else if(contact.Type !== undefined){
             return (
-            <div className="contactNoLogged">
+            <motion.div className="contactNoLogged"
+                 variants={opacity}
+                 initial="init"
+                 animate="visible"
+                 exit="exit"
+            >
                 <span>
                     <h3>Wygląda na to, iż nie jesteś zalogowany. W celu skontaktowania się z nami, zaloguj się</h3>
                     <Link to="/konto" style={{ textDecoration: 'none' }}>
                        <h2>Zaloguj</h2>
                     </Link>
                 </span>
-            </div>)
+            </motion.div>)
         } else {
             if(role === "admin"){
-                return mapMessages()
+                return (
+                    <motion.div className="contactMessages"
+                         variants={opacity}
+                         initial="init"
+                         animate="visible"
+                         exit="exit"
+                    >
+                        <h2>Zapytania użytkowników </h2>
+                        {mapMessages()}
+                    </motion.div>
+                )
             } else {
                 return (
                     <>
@@ -119,6 +147,7 @@ export default function Contact(){
                             </form>
                         </div>
                         <div className="contactMessages">
+                            <h2>Twoje poprzednie wiadomości: </h2>
                             {mapMessages()}
                         </div>
                     </>

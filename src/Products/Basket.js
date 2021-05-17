@@ -106,9 +106,19 @@ export default function Basket(){
 
     const didOrder = () => {
         if(done === false){
-            return <h2 className="center" style={{ height: "92vh" }}>Wygląda na to, iż nie wybrałeś żadnych produktów</h2>
+            return <motion.h2 className="fullCenter" style={{ height: "92vh" }}
+                  variants={opacity}
+                  initial="init"
+                  animate="visible"
+                  exit="exit"
+            >Wygląda na to, iż nie wybrałeś żadnych produktów</motion.h2>
         } else {
-            return <h2 className="center">Produkty zostały zamówione</h2>
+            return <motion.h2 className="fullCenter"
+                  variants={opacity}
+                  initial="init"
+                  animate="visible"
+                  exit="exit"
+            >Produkty zostały zamówione</motion.h2>
         }
     }
 
@@ -118,34 +128,39 @@ export default function Basket(){
 
     const basketNotEmpty = () => {
         return (
-            <>
+            <motion.div
+                variants={opacity}
+                initial="init"
+                animate="visible"
+                exit="exit"
+            >
                 <div className="basketSubmit" onClick={ClearData}>
                     <h1 className="errors" style={{color: "red"}}> </h1>
                     <h1 className="success" style={{color: "green"}}> </h1>
                     <h2>Podsumowanie koszyka</h2>
                     <hr/>
                     <span>
-                <h3 style={{display: "inlineBlock"}}>Razem wychodzi: </h3>
-                <h3 style={{display: "inlineBlock"}} className="basketMoney">0</h3>
-                <button onClick={basketSummary} className="orderButton">Zamów</button>
-            </span>
+                        <h3 style={{display: "inlineBlock"}}>Razem wychodzi: </h3>
+                        <h3 style={{display: "inlineBlock"}} className="basketMoney">0</h3>
+                        <button onClick={basketSummary} className="orderButton">Zamów</button>
+                    </span>
                 </div>
                 <div className="basketMenuInner" onClick={ClearData}>
                     {renderBasket()}
                 </div>
-            </>
+            </motion.div>
         )
     }
 
     return(
-    <div className="basketMenuOutter"
+    <motion.div className="basketMenuOutter"
          variants={opacity}
          initial="init"
          animate="visible"
          exit="exit"
     >
         {isBasketEmpty ? basketNotEmpty() : didOrder()}
-    </div>
+    </motion.div>
     )
 
 }

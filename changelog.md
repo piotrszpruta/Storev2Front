@@ -1,5 +1,18 @@
 #Changelog
 
+## v0.31:
+### Visual
+- Fixed bugged basket animation
+- Fixed few bugs for admins in products pannel
+- Added animation for "loading" div while elements are loading and centered it for users to see
+- Few visual changes in "contact" page. Mostly for mobile users. Removed too big padding and added some "breathing" space
+- Changed css a lil in basket and orders
+- Added menu for admin to answer user's question
+- Removed user's email in contact data for admin. Working on new menu for not logged users where email will be visible
+
+### Under the hood
+- Added new file for generating products 
+
 ## v0.3 ( Bigger update ):
 ### Visual
 - Added animation to all files

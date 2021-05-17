@@ -9,6 +9,17 @@ body {
   background: #dedede;
 }
 
+.fullCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  height: 92vh;
+  text-align: center;
+}
+
 .center {
   display: flex;
   flex-direction: column;
@@ -450,14 +461,34 @@ body {
   max-width: 1600px;
   margin: 0 auto;
 }
+.contactMessages h2 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid grey;
+}
+.contactMessages button {
+  width: 50%;
+  height: 50px;
+  padding: 3px;
+  font-size: x-large;
+  margin: 10px auto;
+  color: white;
+  background: #F9673B;
+  letter-spacing: 1.5px;
+  border: 1px solid grey;
+  box-shadow: 1px 1px 1px #888888;
+  transition: 0.5s all ease-in-out;
+}
+.contactMessages button:hover {
+  box-shadow: none;
+  width: 45%;
+  transition: 0.5s all ease-in-out;
+}
 
 .contactMessage {
   max-width: 450px;
-  width: 400px;
-  height: 500px;
+  height: auto;
   background: white;
-  margin: 10px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -489,9 +520,23 @@ body {
   flex-wrap: wrap;
 }
 
+@media only screen and (min-width: 900px) {
+  .contactMessage {
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+  }
+}
 @media only screen and (max-width: 900px) {
   .form {
     margin-top: 25vh;
+  }
+
+  .contactMessage {
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
   }
 }
 .banner {
@@ -813,7 +858,7 @@ body {
 @media only screen and (min-width: 900px) {
   .productsDiv {
     margin: 0 auto;
-    max-width: 80%;
+    max-width: 90%;
   }
 
   .productDiv {

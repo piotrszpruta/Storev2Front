@@ -9,7 +9,7 @@ import {logOut} from "../Redux/actions/index"
 // Animation
 import { opacity } from "../Animation/Variables"
 
-function AddProducts(props){
+function AnswerContact(props){
     const role = useSelector(state => state.isLogged.role)
 
     const dispatch = useDispatch()
@@ -23,14 +23,8 @@ function AddProducts(props){
             e.preventDefault()
 
             let body = {
-                nazwa: e.target.nazwa.value,
-                rozmiar: e.target.rozmiar.value,
-                producent: e.target.producent.value,
-                dostepnosc: e.target.dostepnosc.value,
-                cena: e.target.cena.value,
-                typ: e.target.typ.value,
-                opis: e.target.opis.value,
-                img: "/Img/" + e.target.img.value
+                id: props.location.state.id,
+                value: e.target.odpowiedz.value
             }
 
             send(body)
@@ -43,7 +37,7 @@ function AddProducts(props){
 
     const send = async (body) => {
         try {
-            const res = await fetch(`http://localhost:5003/add`, {
+            const res = await fetch(`http://localhost:5003/answer`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 credentials: "include",
@@ -70,38 +64,17 @@ function AddProducts(props){
     if(role === "admin"){
         return (
             <motion.div className="center addProducts"
-                variants={opacity}
-                initial="init"
-                animate="visible"
-                exit="exit"
+                        variants={opacity}
+                        initial="init"
+                        animate="visible"
+                        exit="exit"
             >
                 <h1 id="response"> </h1>
                 <h2>Dodawanie produktu</h2>
                 <form>
 
-                    <label htmlFor="nazwa">Nazwa produktu</label>
-                    <input type="text" name="nazwa" required/>
-
-                    <label htmlFor="rozmiar">Rozmiar produktu</label>
-                    <input type="text" name="rozmiar" required/>
-
-                    <label htmlFor="producent">Producent</label>
-                    <input type="text" name="producent" required/>
-
-                    <label htmlFor="dostepnosc">Ilość dostępnych sztuk</label>
-                    <input type="number" name="dostepnosc" required/>
-
-                    <label htmlFor="cena">Cena produktu</label>
-                    <input type="number" name="cena" required/>
-
-                    <label htmlFor="typ">Typ produktu</label>
-                    <input type="text" name="typ" required/>
-
-                    <label htmlFor="opis">Opis produktu</label>
-                    <input type="text" name="opis" required/>
-
-                    <label htmlFor="img">Zdjęcie produktu ( nazwa z rozszerzeniem )</label>
-                    <input type="text" name="img" required/>
+                    <label htmlFor="odpowiedz">Odpowiedź</label>
+                    <input type="text" name="odpowiedz" required/>
 
                     <button>Wyśli</button>
 
@@ -114,4 +87,4 @@ function AddProducts(props){
     }
 }
 
-export default withRouter(AddProducts);
+export default withRouter(AnswerContact);

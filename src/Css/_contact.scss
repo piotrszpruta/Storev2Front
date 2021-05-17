@@ -24,15 +24,20 @@
   @include flexCenter(row);
   max-width: 1600px;
   margin: 0 auto;
+  h2 {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid grey;
+  }
+  button {
+    @include OhOrangeButton();
+  }
 }
 
 .contactMessage {
   max-width: 450px;
-  width: 400px;
-  height: 500px;
+  height: auto;
   background: white;
-  margin: 10px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -61,11 +66,21 @@
 }
 
 @media only screen and (min-width:900px) {
-
+  .contactMessage {
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+  }
 }
 
 @media only screen and (max-width:900px) {
   .form {
    margin-top: 25vh;
+  }
+  .contactMessage {
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
   }
 }

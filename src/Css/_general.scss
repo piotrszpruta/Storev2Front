@@ -9,6 +9,11 @@ body {
   background: #dedede;
 }
 
+.fullCenter {
+  @include flexCenter(column);
+  @include fullPage()
+}
+
 .center {
   @include flexCenter(column);
 }
