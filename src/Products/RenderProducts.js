@@ -52,25 +52,23 @@ export default function RenderProducts(data) {
                              animate="visible"
                              exit="exit"
                         >
-                            {isLogged ? (
-                                isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
-                                onClick={(e) => {
-                                    dispatch(
-                                        addFav(
-                                            e.target.parentElement.id,
-                                            e.target.parentElement.children[2].innerHTML,
-                                            e.target.parentElement.children[1].src,
-                                            e.target.parentElement.children[3].innerHTML,
-                                            e.target.parentElement.children[4].innerHTML,
-                                        )
-                                    )
-                                    dispatch(enablePopup("Produkt został polubiony"))
-                                    setTimeout(() => {
-                                        dispatch(disablePopup())
-                                    }, 3000)
-                                }}
-                                > </i>
-                            ) : ""}
+                            { isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
+                                                onClick={(e) => {
+                                                    dispatch(
+                                                        addFav(
+                                                            e.target.parentElement.id,
+                                                            e.target.parentElement.children[2].innerHTML,
+                                                            e.target.parentElement.children[1].src,
+                                                            e.target.parentElement.children[3].innerHTML,
+                                                            e.target.parentElement.children[4].innerHTML,
+                                                        )
+                                                    )
+                                                    dispatch(enablePopup("Produkt został polubiony"))
+                                                    setTimeout(() => {
+                                                        dispatch(disablePopup())
+                                                    }, 3000)
+                                                }}
+                            > </i>}
                             <img src={item.img} alt=""/>
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
@@ -137,8 +135,7 @@ export default function RenderProducts(data) {
                             animate="visible"
                             exit="exit"
                         >
-                            {isLogged ? (
-                                isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
+                            { isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
                                                   onClick={(e) => {
                                                       dispatch(
                                                           addFav(
@@ -154,8 +151,7 @@ export default function RenderProducts(data) {
                                                           dispatch(disablePopup())
                                                       }, 3000)
                                                   }}
-                                > </i>
-                            ) : ""}
+                                > </i>}
                             <img src={item.img} alt=""/>
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
