@@ -10,8 +10,7 @@ import rootReducer from "./Redux/reducers/index"
 // Create store
 const store = createStore(
     rootReducer,
-    // To niżej pozwala na tryb edycji danych reduxa z przeglądarki ( zbadaj element ).
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 ReactDOM.render(

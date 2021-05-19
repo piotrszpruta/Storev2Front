@@ -5,7 +5,6 @@ import {useSelector} from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
 // Routes
-
 // Home
 import MainMenu from './Home/Home'
 // Account

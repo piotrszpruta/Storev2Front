@@ -12,6 +12,7 @@ import "./Css/fontello/css/fontello.css"
 
 // My modules
 import Navbar from "./Generic/Navbar"
+import Popup from "./Generic/Popup";
 
 export default function App(){
 
@@ -42,6 +43,7 @@ export default function App(){
         <Router>
             <div className="App">
                 <Navbar />
+                <Popup />
                 <div className="content">
                     <Routers />
                 </div>

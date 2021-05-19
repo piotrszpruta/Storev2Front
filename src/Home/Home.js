@@ -11,13 +11,13 @@ import SixthPage from "./Parts/SixthPage"
 import SeventhPage from "./Parts/SeventhPage"
 
 // Animation
-import { opacity } from "../Animation/Variables"
+import { opacityHome } from "../Animation/Variables"
 
 class MainMenu extends React.Component{
     render(){
         return (
             <motion.div
-                variants={opacity}
+                variants={opacityHome}
                 initial="init"
                 animate="visible"
                 exit="exit"

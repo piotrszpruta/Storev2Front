@@ -16,10 +16,23 @@ function EditProducts(props){
     const dispatch = useDispatch()
 
     useEffect(() => {
-        getData(props.history.location.state.productID)
-            .then(data => {
-                setProducts(data[0])
-            })
+        console.log("on boot")
+        if(props.history.location.state !== undefined){
+            getData(props.history.location.state.productID)
+                .then(data => {
+                    setProducts(data[0])
+                })
+        } else {
+            return <motion.div className="fullCenter"
+                               variants={opacity}
+                               initial="init"
+                               animate="visible"
+                               exit="exit"
+            >
+                <h2>Wystąpił błąd. Dane produktu, który miałbyć edytowany nie doszły do tego menu. Spróbuj ponownie</h2>
+            </motion.div>
+        }
+
     }, [])
 
     useEffect(() => {

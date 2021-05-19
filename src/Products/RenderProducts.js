@@ -1,17 +1,20 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Animation data
 import {opacity} from "../Animation/Variables";
 
 // Redux data
-import {addBasket, logOut} from "../Redux/actions/index"
+import {addBasket, logOut, enablePopup, disablePopup} from "../Redux/actions/index"
+
+// Functions
+import {getData} from "./GetProducts"
 
 export default function RenderProducts(data) {
 
-    const [category, setCategory] = useState("home")
+    const [category, setCategory] = useState()
     const [products, setProducts] = useState()
 
     const role = useSelector(state => state.isLogged.role)
@@ -20,37 +23,13 @@ export default function RenderProducts(data) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        setCategory(data.category)
-    }, [data.category])
-
-    useEffect(() => {
-        getData(data)
-            .then(data => {
-                setProducts(data)
-            })
+        setTimeout(() => {
+            getData(data)
+                .then(data => {
+                    setProducts(data)
+                })
+        }, 1000)
     }, [category])
-
-    const getData = async (data) => {
-
-        let body = {
-            "category": data.category,
-            "data": "all"
-        }
-        try {
-            const res = await fetch(`http://localhost:5003/get`, {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                credentials: "include",
-                body: JSON.stringify(body)
-            })
-            return await res.json()
-        } catch (e) {
-            console.log(e)
-            if(e === "TypeError: Failed to fetch"){
-                return "Error"
-            }
-        }
-    }
 
     const renderData = () => {
         if(products === undefined){
@@ -86,6 +65,11 @@ export default function RenderProducts(data) {
                                         e.target.parentElement.children[3].innerHTML,
                                     )
                                 )
+                                dispatch(enablePopup())
+
+                                setTimeout(() => {
+                                    dispatch(disablePopup())
+                                }, 3000)
                             }}>Dodaj do koszyka</button>}
 
                             {isAdmin ? (
@@ -98,7 +82,7 @@ export default function RenderProducts(data) {
                             ) : ""}
                             {isAdmin ? (
                                 <button onClick={ async (e) => {
-                                    e.target.parentElement.remove()
+                                    document.getElementById(e.target.parentElement.id).remove()
                                     try {
                                         const res = await fetch(`http://localhost:5003/remove`, {
                                             method: "POST",
@@ -126,12 +110,17 @@ export default function RenderProducts(data) {
                     )
                 } else {
                     return (
-                        <div key={item.id} className="productDiv">
+                        <motion.div key={item.id} id={item.id} className="productDiv" style={{filter: "grayscale(0.8)"}}
+                            variants={opacity}
+                            initial="init"
+                            animate="visible"
+                            exit="exit"
+                        >
                             <img src={item.img} alt=""/>
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
                             <h4>Cena: {item.cena} zł</h4>
-                            {isAdmin ? "" : <button disabled>Produkt chwilowo niedostępny</button>}
+                            {isAdmin ? "" : <button style={{ fontSize: "larger", height: "60px" }} disabled>Produkt chwilowo niedostępny</button>}
                             {isAdmin ? (
                                 <Link to={{
                                     pathname: '/edytujprodukty',
@@ -142,7 +131,7 @@ export default function RenderProducts(data) {
                             ) : ""}
                             {isAdmin ? (
                                 <button onClick={ async (e) => {
-                                    e.target.parentElement.remove()
+                                    document.getElementById(`'${item.id}'`).remove()
                                     try {
                                         const res = await fetch(`http://localhost:5003/remove`, {
                                             method: "POST",
@@ -166,7 +155,7 @@ export default function RenderProducts(data) {
                                     }
                                 }}>Usuń produkt</button>
                             ) : ""}
-                        </div>
+                        </motion.div>
                     )
                 }
 
@@ -175,15 +164,17 @@ export default function RenderProducts(data) {
     }
 
     return (
-        <motion.div className="productsDiv"
-                    variants={opacity}
-                    initial="init"
-                    animate="visible"
-                    exit="exit"
+        <AnimatePresence exitBeforeEnter>
+            <motion.div className="productsDiv"
+                        variants={opacity}
+                        initial="init"
+                        animate="visible"
+                        exit="exit"
 
-        >
-            {renderData()}
-        </motion.div>
+            >
+                {renderData()}
+            </motion.div>
+        </AnimatePresence>
     )
 
 }

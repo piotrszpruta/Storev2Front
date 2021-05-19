@@ -30,3 +30,15 @@ export const logOut = () => {
         type: "SING_OUT"
     }
 }
+
+export const enablePopup = () => {
+    return {
+        type: "ENABLE"
+    }
+}
+
+export const disablePopup = () => {
+    return {
+        type: "DISABLE"
+    }
+}

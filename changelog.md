@@ -1,5 +1,15 @@
 #Changelog
 
+## v0.33:
+### Visual
+- Added popup for when user add item to basket
+- Fixed buggy "exit" from products animation
+- Added "not available" grayscale for products which are not available 
+
+## v0.32:
+### Visual
+- Fixed buggy "remove item" button
+
 ## v0.31:
 ### Visual
 - Fixed bugged basket animation

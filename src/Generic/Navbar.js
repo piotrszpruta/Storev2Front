@@ -11,11 +11,11 @@ import { slideRight } from "../Animation/Variables"
 export default function Navbar() {
 
     const history = useHistory();
-
     const dispatch = useDispatch()
 
     const role = useSelector(state => state.isLogged.role) === "admin"
     const basketStatus = useSelector(state => state.basket)
+    const basketNotEmpty = basketStatus.length > 0
 
     const showBasket = () => {
         if(window.innerWidth < 900){
@@ -75,7 +75,9 @@ export default function Navbar() {
                         <Link to="/kontakt" style={{ textDecoration: 'none' }}>
                             <i className="icon-phone navIcon"> </i>
                         </Link>
-                        {role ? "" : <i className="icon-basket navIcon" onClick={showBasket}> </i>}
+                        {role ? "" : (
+                            basketNotEmpty ? <i className="icon-basket navIcon" style={{color: "#F9673B"}} onClick={showBasket}> </i> : <i className="icon-basket navIcon" onClick={showBasket}> </i>
+                        )}
                         <Link to="/ulubione" style={{ textDecoration: 'none' }}>
                             <i className="icon-heart navIcon"> </i>
                         </Link>
