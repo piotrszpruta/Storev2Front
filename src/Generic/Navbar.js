@@ -79,9 +79,11 @@ export default function Navbar() {
                         {role ? "" : (
                             basketNotEmpty ? <i className="icon-basket navIcon" style={{color: "#F9673B"}} onClick={showBasket}> </i> : <i className="icon-basket navIcon" onClick={showBasket}> </i>
                         )}
-                        <Link to="/ulubione" style={{ textDecoration: 'none' }}>
-                            <i className="icon-heart navIcon" style={{color: "#ff1c1c"}}> </i>
-                        </Link>
+                        { role ? "" :
+                            <Link to="/ulubione" style={{ textDecoration: 'none' }}>
+                                <i className="icon-heart navIcon" style={{color: "#ff1c1c"}}> </i>
+                            </Link>
+                        }
                         <Link to="/konto" style={{ textDecoration: 'none' }}>
                             <i className="icon-adult navIcon loginIcon"> </i>
                         </Link>
