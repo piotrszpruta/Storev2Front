@@ -21,7 +21,8 @@ import Basket from "./Products/Basket"
 import FourOhFour from "./Generic/FourOhFour"
 // Contact
 import Contact from "./Contact/Contact"
-
+// Favs
+import Favs from "./Account/Favs"
 // Admin
 import AddProducts from "./Admin/AddProducts"
 import EditProducts from "./Admin/EditProducts"
@@ -96,6 +97,9 @@ const loggedStatus = useSelector(state => state.isLogged.isLogged)
                 {/* Kontakt */}
                 <Route exact path="/kontakt" render={() => (
                     <Contact/>
+                )}/>
+                <Route exact path="/ulubione" render={() => (
+                    <Favs/>
                 )}/>
                 {/* Admin */}
                 <Route exact path="/dodajprodukty" render={() => (

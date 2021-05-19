@@ -75,11 +75,12 @@ export default function Navbar() {
                         <Link to="/kontakt" style={{ textDecoration: 'none' }}>
                             <i className="icon-phone navIcon"> </i>
                         </Link>
+                        {isAdmin(role)}
                         {role ? "" : (
                             basketNotEmpty ? <i className="icon-basket navIcon" style={{color: "#F9673B"}} onClick={showBasket}> </i> : <i className="icon-basket navIcon" onClick={showBasket}> </i>
                         )}
                         <Link to="/ulubione" style={{ textDecoration: 'none' }}>
-                            <i className="icon-heart navIcon"> </i>
+                            <i className="icon-heart navIcon" style={{color: "#ff1c1c"}}> </i>
                         </Link>
                         <Link to="/konto" style={{ textDecoration: 'none' }}>
                             <i className="icon-adult navIcon loginIcon"> </i>
@@ -91,7 +92,6 @@ export default function Navbar() {
                     <div className="line2"> </div>
                     <div className="line3"> </div>
                 </div>
-                {isAdmin(role)}
                 {role ? "" : <div className="basketDrop">
                     {basketStatus.map(item => {
                         return <span key={item.id} id={item.id} className="basketItem"><img src={item.img} alt="img"/><h4>{item.name}</h4><h3 onClick={(e) => dispatch(removeBasket(e.target.parentElement.id))}>X</h3></span>
@@ -108,21 +108,11 @@ export default function Navbar() {
 const isAdmin = (role) => {
     if(role){
         return (
-            <div className="adminNavbar">
-                <span className="adminLinks">
-                        <Link to="/dodajprodukty" style={{ textDecoration: 'none' }}>
-                            <div><h5>Dodawanie produktów</h5></div>
-                        </Link>
-
-                        <Link to="/kontakt" style={{ textDecoration: 'none' }}>
-                            <div><h5>Kontakt</h5></div>
-                        </Link>
-
-                        <Link to="/design" style={{ textDecoration: 'none' }}>
-                            <div><h5>Układ strony</h5></div>
-                        </Link>
-                    </span>
-            </div>
+            <>
+                <Link to="/dodajprodukty" style={{ textDecoration: 'none' }}>
+                    <h2 className="navIcon">+</h2>
+                </Link>
+            </>
         )
     }
 }

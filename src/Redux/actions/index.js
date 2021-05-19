@@ -12,6 +12,20 @@ export const removeBasket = (id) => {
     }
 }
 
+export const addFav = (id, name, img, size, price) => {
+    return {
+        type: "ADD_TO_FAVS",
+        payload: {id: id, name: name, img: img, size: size, price: (price.slice(6)).slice(0, -3) }
+    }
+}
+
+export const removeFav = (id) => {
+    return {
+        type: "REMOVE_FROM_FAVS",
+        payload: {id: id}
+    }
+}
+
 export const clearBasket = () => {
     return {
         type: "REMOVE_WHOLE_BASKET"
@@ -31,9 +45,10 @@ export const logOut = () => {
     }
 }
 
-export const enablePopup = () => {
+export const enablePopup = (data) => {
     return {
-        type: "ENABLE"
+        type: "ENABLE",
+        payload: {data: data}
     }
 }
 

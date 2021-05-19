@@ -7,7 +7,8 @@ import {slideBottom} from "../Animation/Variables";
 
 export default function Popup() {
 
-    const popupStatus = useSelector(state => state.popup)
+    const popupStatus = useSelector(state => state.popup.toggle)
+    const popupData = useSelector(state => state.popup.data)
 
     return (
         <AnimatePresence exitBeforeEnter>
@@ -18,7 +19,7 @@ export default function Popup() {
                exit="exit"
             >
                 <h4 className="popupInner">
-                    Dodano do koszyka
+                    {popupData}
                 </h4>
             </motion.div> : " "}
         </AnimatePresence>

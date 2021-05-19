@@ -61,7 +61,7 @@ body {
   margin-top: 8vh;
   background: #F9673B;
   color: white;
-  border-radius: 10%;
+  border-radius: 7%;
   width: 300px;
   height: 100px;
 }
@@ -238,25 +238,6 @@ body {
     font-size: xx-large;
   }
 }
-.adminNavbar {
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  box-shadow: 1px 1px 3px #888888;
-  text-align: center;
-  background: #eeeeee;
-  margin-top: 8vh;
-  overflow: scroll;
-  z-index: 7;
-  transition: 1s all ease-in-out;
-  left: 50px;
-  top: 0;
-}
-.adminNavbar h5 {
-  font-size: x-large;
-  padding: 5px;
-}
-
 .basketMenuOutter {
   display: flex;
   flex-direction: column;
@@ -269,8 +250,9 @@ body {
   margin: 0 auto;
 }
 .basketMenuOutter .basketSubmit button {
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  min-width: 150px;
+  height: 45px;
   padding: 3px;
   font-size: x-large;
   margin: 10px auto;
@@ -379,8 +361,9 @@ body {
   flex-wrap: wrap;
 }
 .accountForm form button {
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  min-width: 150px;
+  height: 45px;
   padding: 3px;
   font-size: x-large;
   margin: 10px auto;
@@ -457,8 +440,9 @@ body {
   font-size: larger;
 }
 .form form button {
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  min-width: 150px;
+  height: 45px;
   padding: 3px;
   font-size: x-large;
   margin: 10px auto;
@@ -493,8 +477,9 @@ body {
   border-bottom: 1px solid grey;
 }
 .contactMessages button {
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  min-width: 150px;
+  height: 45px;
   padding: 3px;
   font-size: x-large;
   margin: 10px auto;
@@ -856,8 +841,9 @@ body {
   padding: 10px;
 }
 .productDiv button {
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  min-width: 150px;
+  height: 45px;
   padding: 3px;
   font-size: x-large;
   margin: 10px auto;
@@ -867,8 +853,6 @@ body {
   border: 1px solid grey;
   box-shadow: 1px 1px 1px #888888;
   transition: 0.5s all ease-in-out;
-  width: 80%;
-  height: 45px;
 }
 .productDiv button:hover {
   box-shadow: none;
@@ -887,6 +871,14 @@ body {
   box-shadow: 1px 1px 1px #5a5a5a;
   background: grey;
   color: white;
+}
+
+.likeButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 @media only screen and (min-width: 900px) {
@@ -930,7 +922,7 @@ body {
     height: 45%;
   }
   .productDiv button {
-    font-size: medium;
+    font-size: larger;
     height: 55px;
   }
 }
@@ -949,8 +941,9 @@ body {
   margin: 5px;
 }
 .addProducts button, .editProducts button {
-  width: 50%;
-  height: 50px;
+  width: 80%;
+  min-width: 150px;
+  height: 45px;
   padding: 3px;
   font-size: x-large;
   margin: 10px auto;

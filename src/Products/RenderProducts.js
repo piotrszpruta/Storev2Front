@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {opacity} from "../Animation/Variables";
 
 // Redux data
-import {addBasket, logOut, enablePopup, disablePopup} from "../Redux/actions/index"
+import {addBasket, addFav, logOut, enablePopup, disablePopup} from "../Redux/actions/index"
 
 // Functions
 import {getData} from "./GetProducts"
@@ -18,6 +18,7 @@ export default function RenderProducts(data) {
     const [products, setProducts] = useState()
 
     const role = useSelector(state => state.isLogged.role)
+    const isLogged = useSelector(state => state.isLogged.isLogged)
     const isAdmin = role === "admin"
 
     const dispatch = useDispatch()
@@ -39,18 +40,37 @@ export default function RenderProducts(data) {
                 animate="visible"
                 exit="exit"
             >
-                <h2>Wczytywanie</h2>
+                <h2>Ładowanie</h2>
             </motion.div>
         } else {
             return products.map(item => {
                 if(item.dostepnosc > 0){
                     return (
-                        <motion.div id={item.id} key={item.id} className="productDiv"
+                        <motion.div id={item.id} key={item.id} className="productDiv" style={{filter: "grayscale(0)"}}
                              variants={opacity}
                              initial="init"
                              animate="visible"
                              exit="exit"
                         >
+                            {isLogged ? (
+                                isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
+                                onClick={(e) => {
+                                    dispatch(
+                                        addFav(
+                                            e.target.parentElement.id,
+                                            e.target.parentElement.children[2].innerHTML,
+                                            e.target.parentElement.children[1].src,
+                                            e.target.parentElement.children[3].innerHTML,
+                                            e.target.parentElement.children[4].innerHTML,
+                                        )
+                                    )
+                                    dispatch(enablePopup("Produkt został polubiony"))
+                                    setTimeout(() => {
+                                        dispatch(disablePopup())
+                                    }, 3000)
+                                }}
+                                > </i>
+                            ) : ""}
                             <img src={item.img} alt=""/>
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
@@ -59,17 +79,18 @@ export default function RenderProducts(data) {
                                 dispatch(
                                     addBasket(
                                         e.target.parentElement.id,
-                                        e.target.parentElement.children[1].innerHTML,
-                                        e.target.parentElement.children[0].src,
                                         e.target.parentElement.children[2].innerHTML,
+                                        e.target.parentElement.children[1].src,
                                         e.target.parentElement.children[3].innerHTML,
+                                        e.target.parentElement.children[4].innerHTML,
                                     )
                                 )
-                                dispatch(enablePopup())
 
+                                dispatch(enablePopup("Produkt został dodany"))
                                 setTimeout(() => {
                                     dispatch(disablePopup())
                                 }, 3000)
+
                             }}>Dodaj do koszyka</button>}
 
                             {isAdmin ? (
@@ -77,7 +98,7 @@ export default function RenderProducts(data) {
                                     pathname: '/edytujprodukty',
                                     state: { productID: item.id }
                                 }} style={{ textDecoration: 'none' }}>
-                                    <button>Edytuj produkt</button>
+                                    <button>Edytuj</button>
                                 </Link>
                             ) : ""}
                             {isAdmin ? (
@@ -116,6 +137,25 @@ export default function RenderProducts(data) {
                             animate="visible"
                             exit="exit"
                         >
+                            {isLogged ? (
+                                isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
+                                                  onClick={(e) => {
+                                                      dispatch(
+                                                          addFav(
+                                                              e.target.parentElement.id,
+                                                              e.target.parentElement.children[2].innerHTML,
+                                                              e.target.parentElement.children[1].src,
+                                                              e.target.parentElement.children[3].innerHTML,
+                                                              e.target.parentElement.children[4].innerHTML,
+                                                          )
+                                                      )
+                                                      dispatch(enablePopup("Produkt został polubiony"))
+                                                      setTimeout(() => {
+                                                          dispatch(disablePopup())
+                                                      }, 3000)
+                                                  }}
+                                > </i>
+                            ) : ""}
                             <img src={item.img} alt=""/>
                             <h2>{item.nazwa}</h2>
                             <h4>Rozmiar: {item.rozmiar}</h4>
@@ -126,7 +166,7 @@ export default function RenderProducts(data) {
                                     pathname: '/edytujprodukty',
                                     state: { productID: item.id }
                                 }} style={{ textDecoration: 'none' }}>
-                                    <button>Edytuj produkt</button>
+                                    <button>Edytuj</button>
                                 </Link>
                             ) : ""}
                             {isAdmin ? (

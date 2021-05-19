@@ -13,8 +13,9 @@
 }
 
 @mixin OhOrangeButton() {
-    width: 50%;
-    height: 50px;
+    width: 80%;
+    min-width: 150px;
+    height: 45px;
     padding: 3px;
     font-size: x-large;
     margin: 10px auto;

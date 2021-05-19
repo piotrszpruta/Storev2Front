@@ -2,6 +2,11 @@
 
 ## v0.33:
 ### Visual
+- Added "favorites" 
+- Fixed basket. Was sending wrong type of data
+
+## v0.33:
+### Visual
 - Added popup for when user add item to basket
 - Fixed buggy "exit" from products animation
 - Added "not available" grayscale for products which are not available 
