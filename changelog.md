@@ -1,5 +1,10 @@
 #Changelog
 
+## v0.34:
+### Visual
+- Redesigned logged user ui ( only button so far. Had no idea what to do :P )
+- Small fix in production build. Fixed buggy images on home screen
+
 ## v0.33:
 ### Visual
 - Added "favorites" 

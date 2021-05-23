@@ -39,10 +39,30 @@
   .accountForm form {
     width: 400px;
   }
+  .logoutButton {
+    position: fixed;
+    top: 8vh;
+    right: 0;
+    @include OhOrangeButton();
+    margin: 10px;
+    width: 150px;
+    &:hover {
+      width: 120px;
+    }
+  }
 }
 
 @media only screen and (max-width:900px) {
   .accountForm form {
     width: 300px;
+  }
+  .logoutButton {
+    align-self: flex-end;
+    @include OhOrangeButton();
+    margin: 10px;
+    width: 150px;
+    &:hover {
+      width: 120px;
+    }
   }
 }

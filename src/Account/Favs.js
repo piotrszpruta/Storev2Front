@@ -7,7 +7,6 @@ import {removeFav} from "../Redux/actions/index"
 
 // Animation
 import { opacity } from "../Animation/Variables"
-import {Link} from "react-router-dom";
 
 export default function Favs(){
     const dispatch = useDispatch()

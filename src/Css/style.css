@@ -404,10 +404,64 @@ body {
   .accountForm form {
     width: 400px;
   }
+
+  .logoutButton {
+    position: fixed;
+    top: 8vh;
+    right: 0;
+    width: 80%;
+    min-width: 150px;
+    height: 45px;
+    padding: 3px;
+    font-size: x-large;
+    margin: 10px auto;
+    color: white;
+    background: #F9673B;
+    letter-spacing: 1.5px;
+    border: 1px solid grey;
+    box-shadow: 1px 1px 1px #888888;
+    transition: 0.5s all ease-in-out;
+    margin: 10px;
+    width: 150px;
+  }
+  .logoutButton:hover {
+    box-shadow: none;
+    width: 45%;
+    transition: 0.5s all ease-in-out;
+  }
+  .logoutButton:hover {
+    width: 120px;
+  }
 }
 @media only screen and (max-width: 900px) {
   .accountForm form {
     width: 300px;
+  }
+
+  .logoutButton {
+    align-self: flex-end;
+    width: 80%;
+    min-width: 150px;
+    height: 45px;
+    padding: 3px;
+    font-size: x-large;
+    margin: 10px auto;
+    color: white;
+    background: #F9673B;
+    letter-spacing: 1.5px;
+    border: 1px solid grey;
+    box-shadow: 1px 1px 1px #888888;
+    transition: 0.5s all ease-in-out;
+    margin: 10px;
+    width: 150px;
+  }
+  .logoutButton:hover {
+    box-shadow: none;
+    width: 45%;
+    transition: 0.5s all ease-in-out;
+  }
+  .logoutButton:hover {
+    width: 120px;
   }
 }
 .contactNoLogged {

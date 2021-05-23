@@ -54,7 +54,7 @@ export default function Navbar() {
                         stiffness: 50
                     }}>
                         <Link to="/" style={{ textDecoration: 'none' }}>
-                            <h5 id="navLogo">Capri</h5>
+                            <h5 id="navLogo">MatHurt</h5>
                         </Link>
                     </motion.span>
                     <span className="links" onClick={toggleNav}>

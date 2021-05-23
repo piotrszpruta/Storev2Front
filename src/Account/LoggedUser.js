@@ -32,8 +32,7 @@ export default function LoggedUser(){
              animate="visible"
              exit="exit"
         >
-            <button onClick={removeToken}>Log out</button>
-            Logged user
+            <button onClick={removeToken} className="logoutButton">Log out</button>
             <ViewOrders/>
         </motion.div>
     )

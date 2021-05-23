@@ -76,7 +76,7 @@ function EditProducts(props){
         }
     }
 
-    const listen = () => {
+    const listen = (e) => {
         document.querySelector("form").addEventListener("submit", (e) => {
             e.preventDefault()
 
@@ -135,7 +135,7 @@ function EditProducts(props){
             >
                 <h1 id="response"> </h1>
                 <h2>Edycja produktu</h2>
-                <form>
+                <form onSubmit={listen}>
 
                     <label htmlFor="nazwa">Nazwa produktu</label>
                     <input type="text" name="nazwa" required/>

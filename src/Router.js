@@ -68,25 +68,25 @@ const loggedStatus = useSelector(state => state.isLogged.isLogged)
                 )}/>
                 {/* Produkty */}
                 <Route exact path="/warzywa" render={() => (
-                    <Products category={ (window.location.pathname).slice(1) }/>
+                    <Products category={ window.location.pathname.split("/").pop() }/>
                 )}/>
                 <Route exact path="/warzywa/:item?" render={() => (
                     <Item/>
                 )}/>
                 <Route exact path="/owoce" render={() => (
-                    <Products category={ (window.location.pathname).slice(1) }/>
+                    <Products category={ window.location.pathname.split("/").pop() }/>
                 )}/>
                 <Route exact path="/owoce/:item?" render={() => (
                     <Item/>
                 )}/>
                 <Route exact path="/slodycze" render={() => (
-                    <Products category={ (window.location.pathname).slice(1) }/>
+                    <Products category={ window.location.pathname.split("/").pop() }/>
                 )}/>
                 <Route exact path="/slodycze/:item?" render={() => (
                     <Item/>
                 )}/>
                 <Route exact path="/chemia" render={() => (
-                    <Products category={ (window.location.pathname).slice(1) }/>
+                    <Products category={ window.location.pathname.split("/").pop() }/>
                 )}/>
                 <Route exact path="/chemia/:item?" render={() => (
                     <Item/>

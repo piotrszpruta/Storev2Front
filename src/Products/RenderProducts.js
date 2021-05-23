@@ -13,6 +13,7 @@ import {addBasket, addFav, logOut, enablePopup, disablePopup} from "../Redux/act
 import {getData} from "./GetProducts"
 
 export default function RenderProducts(data) {
+    console.log(data)
 
     const [category, setCategory] = useState()
     const [products, setProducts] = useState()
@@ -53,21 +54,21 @@ export default function RenderProducts(data) {
                              exit="exit"
                         >
                             { isAdmin ? "" : <i className="icon-heart likeButton" style={{color: "#ff1c1c"}}
-                                                onClick={(e) => {
-                                                    dispatch(
-                                                        addFav(
-                                                            e.target.parentElement.id,
-                                                            e.target.parentElement.children[2].innerHTML,
-                                                            e.target.parentElement.children[1].src,
-                                                            e.target.parentElement.children[3].innerHTML,
-                                                            e.target.parentElement.children[4].innerHTML,
-                                                        )
-                                                    )
-                                                    dispatch(enablePopup("Produkt został polubiony"))
-                                                    setTimeout(() => {
-                                                        dispatch(disablePopup())
-                                                    }, 3000)
-                                                }}
+                                onClick={(e) => {
+                                    dispatch(
+                                        addFav(
+                                            e.target.parentElement.id,
+                                            e.target.parentElement.children[2].innerHTML,
+                                            e.target.parentElement.children[1].src,
+                                            e.target.parentElement.children[3].innerHTML,
+                                            e.target.parentElement.children[4].innerHTML,
+                                        )
+                                    )
+                                    dispatch(enablePopup("Produkt został polubiony"))
+                                    setTimeout(() => {
+                                        dispatch(disablePopup())
+                                    }, 3000)
+                                }}
                             > </i>}
                             <img src={item.img} alt=""/>
                             <h2>{item.nazwa}</h2>
